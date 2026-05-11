@@ -85,7 +85,7 @@ export default function FAQ() {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
 
   return (
-    <SectionWrapper id="faq" className="bg-white text-black py-24 md:py-32 px-6 md:px-10">
+    <SectionWrapper id="faq" className="bg-white text-black py-16 md:py-20 px-6 md:px-10">
       <div className="max-w-4xl mx-auto">
         <SectionHeading className="text-black mb-12 md:mb-16">
           FAQ

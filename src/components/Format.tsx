@@ -103,7 +103,7 @@ function StageBlock({ stage, index }: { stage: typeof stages[0]; index: number }
   const slideFrom = isLeft ? -80 : 80;
 
   return (
-    <div className="relative min-h-[60vh] flex items-center py-16 md:py-24">
+    <div className="relative min-h-[40vh] md:min-h-[50vh] flex items-center py-12 md:py-16">
       {/* Pink number — always on the outer edge */}
       <div className={`hidden lg:block absolute top-1/2 -translate-y-1/2 ${isLeft ? 'left-0' : 'right-0'}`}>
         <motion.span
@@ -216,7 +216,7 @@ export default function Format() {
       </div>
 
       {/* Full video block */}
-      <div className="px-6 md:px-10 py-16 md:py-24 max-w-7xl mx-auto">
+      <div className="px-6 md:px-10 py-12 md:py-16 max-w-7xl mx-auto">
         <motion.div
           className="bg-white/5 border border-white/10 p-8 md:p-16"
           initial={{ opacity: 0, y: 50 }}

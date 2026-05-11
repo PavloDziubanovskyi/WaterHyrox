@@ -12,7 +12,7 @@ const ageCategories = [
 
 export default function Categories() {
   return (
-    <SectionWrapper id="categories" className="bg-white text-black py-24 md:py-32 px-6 md:px-10">
+    <SectionWrapper id="categories" className="bg-white text-black py-16 md:py-20 px-6 md:px-10">
       <div className="max-w-7xl mx-auto">
         <SectionHeading className="text-black mb-12 md:mb-16">
           КАТЕГОРІЇ

@@ -19,7 +19,7 @@ export default function SectionWrapper({ children, className = '', id }: Section
   return (
     <motion.section
       id={id}
-      className={`min-h-screen relative ${className}`}
+      className={`relative ${className}`}
       variants={sectionVariants}
       initial="hidden"
       whileInView="visible"

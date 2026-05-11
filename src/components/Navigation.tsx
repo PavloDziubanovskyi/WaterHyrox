@@ -68,19 +68,31 @@ export default function Navigation() {
       <AnimatePresence>
         {isOpen && (
           <motion.div
-            className="fixed inset-0 z-50 bg-black flex flex-col justify-between items-start px-6 sm:px-10 md:px-20 pt-24 pb-8 overflow-y-auto"
+            className="fixed inset-0 z-50 bg-black flex flex-col justify-between items-center px-6 sm:px-10 md:px-20 pt-24 pb-8 overflow-y-auto"
             initial={{ clipPath: 'circle(0% at calc(100% - 40px) 40px)' }}
             animate={{ clipPath: 'circle(150% at calc(100% - 40px) 40px)' }}
             exit={{ clipPath: 'circle(0% at calc(100% - 40px) 40px)' }}
             transition={{ duration: 0.6, ease: [0.83, 0, 0.17, 1] }}
           >
-            <div className="flex-1 flex flex-col justify-center gap-1 sm:gap-2 md:gap-3 w-full">
+            {/* Close button - large X in top right */}
+            <button
+              onClick={() => setIsOpen(false)}
+              className="fixed top-4 right-4 sm:top-6 sm:right-6 z-[70] w-12 h-12 sm:w-14 sm:h-14 flex items-center justify-center rounded-full border-2 border-white/40 hover:border-pink-accent transition-colors group"
+              aria-label="Close menu"
+            >
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" className="text-white group-hover:text-pink-accent transition-colors">
+                <line x1="6" y1="6" x2="18" y2="18" />
+                <line x1="18" y1="6" x2="6" y2="18" />
+              </svg>
+            </button>
+
+            <div className="flex-1 flex flex-col justify-center items-center gap-1 sm:gap-2 md:gap-3 w-full text-center">
               {menuItems.map((item, i) => (
                 <motion.div
                   key={item.href}
-                  initial={{ x: 80, opacity: 0 }}
-                  animate={{ x: 0, opacity: 1 }}
-                  exit={{ x: 80, opacity: 0 }}
+                  initial={{ y: 40, opacity: 0 }}
+                  animate={{ y: 0, opacity: 1 }}
+                  exit={{ y: 40, opacity: 0 }}
                   transition={{ delay: 0.2 + i * 0.04, type: 'spring', damping: 22 }}
                 >
                   <a
@@ -89,9 +101,9 @@ export default function Navigation() {
                       e.preventDefault();
                       handleNavClick(item.href);
                     }}
-                    className="group relative inline-flex items-center gap-3 sm:gap-4 font-display text-[28px] sm:text-[40px] md:text-[64px] lg:text-[80px] leading-[1.05] text-white hover:text-pink-accent transition-colors duration-300"
+                    className="group relative inline-flex items-baseline gap-3 sm:gap-4 font-display text-[28px] sm:text-[40px] md:text-[64px] lg:text-[72px] leading-[1.05] text-white hover:text-pink-accent transition-colors duration-300"
                   >
-                    <span className="text-pink-accent/40 text-base sm:text-xl md:text-2xl font-body tracking-widest min-w-[40px]">
+                    <span className="text-pink-accent/40 text-sm sm:text-base md:text-xl font-body tracking-widest">
                       0{i + 1}
                     </span>
                     <span className="relative">
@@ -109,7 +121,7 @@ export default function Navigation() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.6 }}
             >
-              <div className="flex flex-col gap-2">
+              <div className="flex flex-col gap-2 items-center sm:items-start">
                 <span className="font-body text-xs text-white/40 tracking-widest uppercase">Слідкуйте за нами</span>
                 <div className="flex gap-5">
                   <a
@@ -143,7 +155,7 @@ export default function Navigation() {
                   </a>
                 </div>
               </div>
-              <div className="text-left sm:text-right">
+              <div className="text-center sm:text-right">
                 <div className="font-display text-2xl sm:text-3xl text-white">22.08.2026</div>
                 <div className="font-body text-xs text-pink-accent tracking-widest uppercase mt-1">с. Зашляхом</div>
               </div>

@@ -6,7 +6,7 @@ const sponsorSlots = Array.from({ length: 8 }, (_, i) => i + 1);
 
 export default function Sponsors() {
   return (
-    <SectionWrapper id="sponsors" className="bg-black py-24 md:py-32 px-6 md:px-10">
+    <SectionWrapper id="sponsors" className="bg-black py-16 md:py-20 px-6 md:px-10">
       <div className="max-w-7xl mx-auto">
         <SectionHeading className="text-white mb-12 md:mb-16">
           СПОНСОРИ

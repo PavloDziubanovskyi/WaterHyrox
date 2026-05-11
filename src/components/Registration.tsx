@@ -18,7 +18,7 @@ const steps = [
 
 export default function Registration() {
   return (
-    <SectionWrapper id="registration" className="bg-white text-black py-24 md:py-32 px-6 md:px-10">
+    <SectionWrapper id="registration" className="bg-white text-black py-16 md:py-20 px-6 md:px-10">
       <div className="max-w-4xl mx-auto">
         <SectionHeading className="text-black mb-4">
           ЗАРЕЄСТРУВАТИСЬ

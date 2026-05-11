@@ -11,7 +11,7 @@ const scheduleItems = [
 
 export default function Schedule() {
   return (
-    <SectionWrapper id="schedule" className="bg-black py-24 md:py-32 px-6 md:px-10">
+    <SectionWrapper id="schedule" className="bg-black py-16 md:py-20 px-6 md:px-10">
       <div className="max-w-4xl mx-auto">
         <SectionHeading className="text-white mb-12 md:mb-16">
           РОЗКЛАД

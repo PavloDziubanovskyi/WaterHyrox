@@ -3,7 +3,7 @@ import { Instagram, Facebook, Mail, Phone } from 'lucide-react';
 
 export default function Footer() {
   return (
-    <footer id="contacts" className="bg-black py-24 md:py-32 px-6 md:px-10">
+    <footer id="contacts" className="bg-black py-16 md:py-20 px-6 md:px-10">
       <div className="max-w-4xl mx-auto text-center">
         <motion.div
           className="mb-10 md:mb-14"

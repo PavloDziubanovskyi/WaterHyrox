@@ -3,7 +3,7 @@ import SectionWrapper, { SectionHeading } from './SectionWrapper';
 
 export default function Organizers() {
   return (
-    <SectionWrapper id="organizers" className="bg-white text-black py-24 md:py-32 px-6 md:px-10">
+    <SectionWrapper id="organizers" className="bg-white text-black py-16 md:py-20 px-6 md:px-10">
       <div className="max-w-4xl mx-auto text-center">
         <SectionHeading className="text-black mb-12 md:mb-16">
           ОРГАНІЗАТОРИ

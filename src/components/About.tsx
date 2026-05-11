@@ -27,7 +27,7 @@ function StatBlock({ value, label, suffix = '' }: { value: number; label: string
 
 export default function About() {
   return (
-    <SectionWrapper id="about" className="bg-white text-black py-24 md:py-32 px-6 md:px-10">
+    <SectionWrapper id="about" className="bg-white text-black py-16 md:py-20 px-6 md:px-10">
       <div className="max-w-7xl mx-auto">
         <SectionHeading className="text-black mb-8 md:mb-12">
           ЦЕ НЕ ПРОСТО<br />ПЛАВАННЯ
