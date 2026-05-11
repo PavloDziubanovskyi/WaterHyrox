@@ -16,12 +16,13 @@ export default function Organizers() {
           viewport={{ once: true }}
           transition={{ delay: 0.2 }}
         >
-          {/* TODO: replace with actual Otter Project logo */}
-          <div className="w-32 h-32 md:w-40 md:h-40 mx-auto bg-black/5 border-2 border-black/10 flex items-center justify-center mb-6">
-            <span className="font-display text-3xl md:text-4xl text-black/20">OTTER</span>
-          </div>
+          <img
+            src="/otter-project-logo.jpg"
+            alt="OTTER PROJECT"
+            className="w-32 h-32 md:w-40 md:h-40 mx-auto object-contain mb-6"
+          />
           <h3 className="font-display text-4xl md:text-6xl text-black mb-4">
-            ГО Otter Project
+            ГО OTTER PROJECT
           </h3>
         </motion.div>
 
@@ -32,7 +33,7 @@ export default function Organizers() {
           viewport={{ once: true }}
           transition={{ delay: 0.4 }}
         >
-          Громадська організація Otter Project — команда ентузіастів, які вірять у силу спорту та спільноти.
+          Громадська організація OTTER PROJECT — команда ентузіастів, які вірять у силу спорту та спільноти.
           Ми створюємо події, що надихають, об'єднують та змінюють.
         </motion.p>
 

@@ -85,14 +85,15 @@ export default function Footer() {
           transition={{ delay: 0.4 }}
         >
           <div className="flex items-center justify-center gap-3 mb-4">
-            {/* TODO: replace with actual Otter Project logo */}
-            <div className="w-8 h-8 bg-white/5 flex items-center justify-center">
-              <span className="font-display text-xs text-white/20">OP</span>
-            </div>
-            <span className="font-body text-sm text-white/30">ГО Otter Project</span>
+            <img
+              src="/otter-project-logo.jpg"
+              alt="OTTER PROJECT"
+              className="w-10 h-10 object-contain"
+            />
+            <span className="font-body text-sm text-white/50">ГО OTTER PROJECT</span>
           </div>
           <p className="font-body text-xs text-white/20">
-            &copy; 2026 WATER HYROX. Організовано ГО Otter Project
+            &copy; 2026 WATER HYROX. Організовано ГО OTTER PROJECT
           </p>
         </motion.div>
       </div>
