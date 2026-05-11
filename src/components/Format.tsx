@@ -139,12 +139,18 @@ function StageBlock({ stage, index }: { stage: typeof stages[0]; index: number }
 
         {/* Icon */}
         <div className="flex items-center gap-3 mb-4 text-white">
-          <IconComponent size={80} strokeWidth={1.5} />
-          {SecondaryIcon && <SecondaryIcon size={80} strokeWidth={1.5} />}
+          <IconComponent size={56} strokeWidth={1.5} className="md:hidden" />
+          <IconComponent size={80} strokeWidth={1.5} className="hidden md:block" />
+          {SecondaryIcon && (
+            <>
+              <SecondaryIcon size={56} strokeWidth={1.5} className="md:hidden" />
+              <SecondaryIcon size={80} strokeWidth={1.5} className="hidden md:block" />
+            </>
+          )}
         </div>
 
         {/* Title */}
-        <h3 className="font-display text-[48px] md:text-[64px] lg:text-[80px] xl:text-[96px] leading-[0.9] text-white mb-4 uppercase">
+        <h3 className="font-display text-[32px] sm:text-[44px] md:text-[64px] lg:text-[80px] xl:text-[96px] leading-[0.9] text-white mb-4 uppercase">
           {stage.title}
         </h3>
 
@@ -177,9 +183,9 @@ export default function Format() {
   return (
     <section id="format" className="bg-black relative" ref={containerRef}>
       {/* Section header */}
-      <div className="px-6 md:px-10 pt-24 md:pt-32 pb-8 md:pb-12 max-w-7xl mx-auto">
+      <div className="px-4 sm:px-6 md:px-10 pt-20 sm:pt-24 md:pt-32 pb-8 md:pb-12 max-w-7xl mx-auto">
         <motion.h2
-          className="font-display text-[80px] md:text-[120px] lg:text-[140px] leading-none text-white mb-4"
+          className="font-display text-[44px] sm:text-[64px] md:text-[100px] lg:text-[140px] leading-none text-white mb-4"
           initial={{ y: 60, opacity: 0 }}
           whileInView={{ y: 0, opacity: 1 }}
           viewport={{ once: true }}
@@ -188,7 +194,7 @@ export default function Format() {
           ЯК ЦЕ<br />ВІДБУВАЄТЬСЯ
         </motion.h2>
         <motion.p
-          className="font-body text-sm md:text-base tracking-[0.2em] text-pink-accent uppercase"
+          className="font-body text-xs sm:text-sm md:text-base tracking-[0.2em] text-pink-accent uppercase"
           initial={{ y: 30, opacity: 0 }}
           whileInView={{ y: 0, opacity: 1 }}
           viewport={{ once: true }}
