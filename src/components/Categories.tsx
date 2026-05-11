@@ -2,12 +2,12 @@ import { motion } from 'framer-motion';
 import SectionWrapper, { SectionHeading } from './SectionWrapper';
 
 const ageCategories = [
-  { range: '12–15', number: 1, tag: 'НОВА — для дітей' },
-  { range: '16–25', number: 2, tag: null },
-  { range: '26–35', number: 3, tag: null },
-  { range: '36–45', number: 4, tag: null },
-  { range: '46–55', number: 5, tag: null },
-  { range: '56+', number: 6, tag: null },
+  { name: 'ЮНАЦТВО', range: '12–15 років', number: 1 },
+  { name: 'МОЛОДЬ', range: '16–25 років', number: 2 },
+  { name: 'ДОРОСЛІ', range: '26–35 років', number: 3 },
+  { name: 'ДОРОСЛІ', range: '36–45 років', number: 4 },
+  { name: 'ДОРОСЛІ', range: '46–55 років', number: 5 },
+  { name: 'ДОРОСЛІ', range: '56+ років', number: 6 },
 ];
 
 export default function Categories() {
@@ -36,18 +36,15 @@ export default function Categories() {
               <div className="font-display text-[56px] md:text-[72px] leading-none text-black/10 mb-2">
                 {cat.number}
               </div>
-              <div className="font-display text-3xl md:text-4xl text-black mb-2">
+              <div className="font-display text-2xl md:text-3xl text-pink-accent mb-2 tracking-wider">
+                {cat.name}
+              </div>
+              <div className="font-display text-xl md:text-2xl text-black mb-2">
                 {cat.range}
               </div>
-              {cat.tag ? (
-                <div className="font-body text-xs text-pink-accent tracking-wider font-semibold">
-                  {cat.tag}
-                </div>
-              ) : (
-                <div className="font-body text-xs text-black/50 tracking-wider">
-                  Чоловіки + Жінки
-                </div>
-              )}
+              <div className="font-body text-xs text-black/50 tracking-wider">
+                Чоловіки + Жінки
+              </div>
             </motion.div>
           ))}
         </div>
