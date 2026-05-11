@@ -6,6 +6,7 @@ import CustomCursor from './components/CustomCursor';
 import Hero from './components/Hero';
 import About from './components/About';
 import Format from './components/Format';
+import Timing from './components/Timing';
 import Categories from './components/Categories';
 import Schedule from './components/Schedule';
 import Registration from './components/Registration';
@@ -13,6 +14,7 @@ import Location from './components/Location';
 import Organizers from './components/Organizers';
 import Sponsors from './components/Sponsors';
 import FAQ from './components/FAQ';
+import MediaNote from './components/MediaNote';
 import Footer from './components/Footer';
 
 function App() {
@@ -51,6 +53,7 @@ function App() {
         <Hero />
         <About />
         <Format />
+        <Timing />
         <Categories />
         <Schedule />
         <Registration />
@@ -58,6 +61,7 @@ function App() {
         <Organizers />
         <Sponsors />
         <FAQ />
+        <MediaNote />
         <Footer />
       </main>
     </>

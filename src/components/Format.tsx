@@ -215,6 +215,26 @@ export default function Format() {
         ))}
       </div>
 
+      {/* Veteran modifications notes */}
+      <div className="px-6 md:px-10 py-8 md:py-10 max-w-7xl mx-auto">
+        <motion.div
+          className="border-l-2 border-pink-accent/60 pl-6 py-2 space-y-3"
+          initial={{ opacity: 0, x: -20 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true }}
+        >
+          <div className="font-body text-xs text-pink-accent tracking-[0.3em] uppercase mb-3">
+            Модифікації для категорії «Ветерани»
+          </div>
+          <p className="font-body text-sm md:text-base text-white/60 leading-relaxed">
+            <span className="text-pink-accent font-semibold">*</span> Станція 1 — «Берпі зі стрибком в довжину» — можлива модифікація з відтисканням та крокуванням
+          </p>
+          <p className="font-body text-sm md:text-base text-white/60 leading-relaxed">
+            <span className="text-pink-accent font-semibold">**</span> Станція 2 — «Прогулянка фермера» — передбачена можливість вибору ваги гантелей
+          </p>
+        </motion.div>
+      </div>
+
       {/* Full video block */}
       <div className="px-6 md:px-10 py-12 md:py-16 max-w-7xl mx-auto">
         <motion.div
@@ -224,7 +244,7 @@ export default function Format() {
           viewport={{ once: true }}
           transition={{ duration: 0.7 }}
         >
-          <h3 className="font-display text-[48px] md:text-[72px] lg:text-[96px] leading-none text-white mb-4">
+          <h3 className="font-display text-[32px] sm:text-[48px] md:text-[72px] lg:text-[96px] leading-none text-white mb-4">
             ПОВНЕ ВІДЕО ПРОХОДЖЕННЯ ДИСТАНЦІЇ
           </h3>
           <p className="font-body text-sm md:text-base text-white/50 mb-8 max-w-xl">

@@ -3,11 +3,11 @@ import { Check } from 'lucide-react';
 import SectionWrapper, { SectionHeading } from './SectionWrapper';
 
 const starterPackItems = [
-  'Шопер',
-  'Пляшка',
-  'Шкарпетки',
-  'Медаль',
-  'Подарунки спонсорів',
+  'Брендований шопер змагань',
+  'Брендована пляшка змагань',
+  'Брендовані шкарпетки',
+  'Медаль за участь (видається після фінішу)',
+  'Подарунки від спонсорів',
 ];
 
 const steps = [

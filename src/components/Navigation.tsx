@@ -125,7 +125,7 @@ export default function Navigation() {
                 <span className="font-body text-xs text-white/40 tracking-widest uppercase">Слідкуйте за нами</span>
                 <div className="flex gap-5">
                   <a
-                    href="https://instagram.com"
+                    href="https://www.instagram.com/otter._.project?igsh=MnEyMW02YzJxOWNw&utm_source=qr"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="text-white hover:text-pink-accent transition-colors hover:scale-110 transform duration-200"
@@ -134,7 +134,7 @@ export default function Navigation() {
                     <Instagram size={28} />
                   </a>
                   <a
-                    href="https://tiktok.com"
+                    href="https://www.tiktok.com/@otter.project?_r=1&_t=ZS-96HPViJOrKu"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="text-white hover:text-pink-accent transition-colors hover:scale-110 transform duration-200"
