@@ -1,0 +1,82 @@
+import { motion } from 'framer-motion';
+import SectionWrapper, { SectionHeading } from './SectionWrapper';
+
+const ageCategories = [
+  { range: '12–15', number: 1, tag: 'НОВА — для дітей' },
+  { range: '16–25', number: 2, tag: null },
+  { range: '26–35', number: 3, tag: null },
+  { range: '36–45', number: 4, tag: null },
+  { range: '46–55', number: 5, tag: null },
+  { range: '56+', number: 6, tag: null },
+];
+
+export default function Categories() {
+  return (
+    <SectionWrapper id="categories" className="bg-white text-black py-24 md:py-32 px-6 md:px-10">
+      <div className="max-w-7xl mx-auto">
+        <SectionHeading className="text-black mb-12 md:mb-16">
+          КАТЕГОРІЇ
+        </SectionHeading>
+
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 mb-8">
+          {ageCategories.map((cat, i) => (
+            <motion.div
+              key={cat.number}
+              className="bg-white border-2 border-black p-6 md:p-8 text-center group cursor-hover"
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: i * 0.08 }}
+              whileHover={{
+                y: -8,
+                boxShadow: '0 12px 40px rgba(255, 45, 155, 0.25)',
+                borderColor: '#FF2D9B',
+              }}
+            >
+              <div className="font-display text-[56px] md:text-[72px] leading-none text-black/10 mb-2">
+                {cat.number}
+              </div>
+              <div className="font-display text-3xl md:text-4xl text-black mb-2">
+                {cat.range}
+              </div>
+              {cat.tag ? (
+                <div className="font-body text-xs text-pink-accent tracking-wider font-semibold">
+                  {cat.tag}
+                </div>
+              ) : (
+                <div className="font-body text-xs text-black/50 tracking-wider">
+                  Чоловіки + Жінки
+                </div>
+              )}
+            </motion.div>
+          ))}
+        </div>
+
+        <motion.div
+          className="bg-black border-2 border-pink-accent p-8 md:p-12 mb-8"
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.4 }}
+        >
+          <h3 className="font-display text-4xl md:text-6xl text-pink-accent mb-4">ВЕТЕРАНИ</h3>
+          <p className="font-body text-base md:text-lg text-white/70 leading-relaxed max-w-3xl">
+            Ветерани війни, УБД, особи з інвалідністю — окремий залік, незалежно від віку
+          </p>
+        </motion.div>
+
+        <motion.div
+          className="bg-white border-2 border-black p-6 md:p-8"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.5 }}
+        >
+          <p className="font-display text-xl md:text-3xl text-black text-center leading-snug">
+            АБСОЛЮТНИЙ ЧЕМПІОН ВИЗНАЧАЄТЬСЯ СЕРЕД УСІХ КАТЕГОРІЙ — ОДИН ЧОЛОВІК + ОДНА ЖІНКА
+          </p>
+        </motion.div>
+      </div>
+    </SectionWrapper>
+  );
+}
