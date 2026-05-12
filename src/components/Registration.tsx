@@ -103,7 +103,7 @@ export default function Registration() {
         </motion.div>
 
         <motion.a
-          href="https://forms.google.com/"
+          href="https://forms.gle/W2NuDEQz9hjeAGZ86"
           target="_blank"
           rel="noopener noreferrer"
           className="inline-block px-12 py-5 bg-pink-accent text-black font-display text-2xl md:text-3xl tracking-wider hover:bg-black hover:text-pink-accent border-2 border-pink-accent transition-all duration-300 glow-pink glow-pink-hover"
