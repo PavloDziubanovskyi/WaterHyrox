@@ -234,28 +234,6 @@ export default function Format() {
           </p>
         </motion.div>
       </div>
-
-      {/* Full video block */}
-      <div className="px-6 md:px-10 py-12 md:py-16 max-w-7xl mx-auto">
-        <motion.div
-          className="bg-white/5 border border-white/10 p-8 md:p-16"
-          initial={{ opacity: 0, y: 50 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.7 }}
-        >
-          <h3 className="font-display text-[32px] sm:text-[48px] md:text-[72px] lg:text-[96px] leading-none text-white mb-4">
-            ПОВНЕ ВІДЕО ПРОХОДЖЕННЯ ДИСТАНЦІЇ
-          </h3>
-          <p className="font-body text-sm md:text-base text-white/50 mb-8 max-w-xl">
-            Дивіться повне проходження всіх етапів дистанції WATER HYROX
-          </p>
-          {/* TODO: replace with actual video URL */}
-          <div className="w-full aspect-video bg-white/5 border border-white/10 flex items-center justify-center">
-            <span className="font-body text-base md:text-lg text-white/20 tracking-wider">Відео з'явиться найближчим часом</span>
-          </div>
-        </motion.div>
-      </div>
     </section>
   );
 }

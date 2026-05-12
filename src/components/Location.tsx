@@ -23,7 +23,7 @@ export default function Location() {
               <span className="font-display text-2xl md:text-3xl text-white">Розважальний комплекс</span>
             </div>
             <h3 className="font-display text-4xl md:text-6xl text-pink-accent mb-6">
-              «ЛовиВітер»
+              «Ловивітер»
             </h3>
             <p className="font-body text-lg md:text-xl text-white/60 leading-relaxed">
               с. Зашляхом, вул. Підлісна 2, Тернопільська обл., Кременецький р-н

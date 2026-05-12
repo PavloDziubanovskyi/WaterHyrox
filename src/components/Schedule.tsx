@@ -2,11 +2,11 @@ import { motion } from 'framer-motion';
 import SectionWrapper, { SectionHeading } from './SectionWrapper';
 
 const scheduleItems = [
-  { time: '08:00', event: 'Реєстрація + розминка' },
-  { time: '08:45', event: 'Відкриття змагань' },
-  { time: '09:00', event: 'Старт першої хвилі (10 учасників)' },
-  { time: '', event: 'Кожна наступна хвиля стартує після фінішу попередньої', isSubItem: true },
-  { time: '', event: 'Після всіх хвиль — Нагородження', isFinal: true },
+  { time: '08:00', event: 'Відкриття реєстрації учасників. Розминка у басейні дозволена з 08:00 на виділеній доріжці' },
+  { time: '08:55', event: 'Офіційне відкриття змагань, брифінг учасників' },
+  { time: '09:15', event: 'Старт змагань — перший заплив (10 учасників)' },
+  { time: '', event: 'Послідовно кожні 10 учасників стартують після того, як попередній заплив завершить дистанцію', isSubItem: true },
+  { time: '', event: 'Після всіх запливів — Нагородження учасників', isFinal: true },
 ];
 
 export default function Schedule() {
