@@ -93,9 +93,9 @@ export default function Hero() {
           <div className="hidden md:block w-px h-12 bg-white/10" />
           <div className="text-center">
             <div className="font-display text-[32px] md:text-[56px] leading-none text-pink-accent mb-1">
-              87<span className="text-white/30">/110</span>
+              0<span className="text-white/30">/110</span>
             </div>
-            <p className="text-xs md:text-sm text-white/60 font-body tracking-wider">ВІЛЬНИХ МІСЦЬ</p>
+            <p className="text-xs md:text-sm text-white/60 font-body tracking-wider">ЗАРЕЄСТРОВАНО</p>
           </div>
         </motion.div>
 
