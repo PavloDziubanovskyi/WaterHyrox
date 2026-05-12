@@ -12,17 +12,16 @@ export default function Footer() {
     <footer id="contacts" className="bg-black py-16 md:py-20 px-6 md:px-10">
       <div className="max-w-5xl mx-auto text-center">
         <motion.div
-          className="mb-10 md:mb-14"
+          className="mb-10 md:mb-14 w-full flex justify-center"
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
         >
-          <h2 className="font-display text-[56px] sm:text-[80px] md:text-[120px] leading-[0.85] text-white mb-2">
-            WATER
-          </h2>
-          <h2 className="font-display text-[56px] sm:text-[80px] md:text-[120px] leading-[0.85] text-white">
-            HYROX
-          </h2>
+          <img
+            src="/water-hyrox-for-dark-bg.svg"
+            alt="WATER HYROX"
+            className="w-full max-w-[260px] sm:max-w-[400px] md:max-w-[600px] h-auto"
+          />
         </motion.div>
 
         {/* Contacts section */}

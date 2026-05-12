@@ -48,24 +48,18 @@ export default function Hero() {
         animate={{ opacity: 1 }}
         transition={{ duration: 0.8, delay: 0.2 }}
       >
-        <div className="mb-4 md:mb-6">
-          <motion.h1
-            className="font-display text-[56px] sm:text-[80px] md:text-[140px] lg:text-[180px] leading-[0.85] text-white"
-            initial={{ y: 40, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            transition={{ type: 'spring', damping: 20, stiffness: 60, delay: 0.3 }}
-          >
-            WATER
-          </motion.h1>
-          <motion.h1
-            className="font-display text-[56px] sm:text-[80px] md:text-[140px] lg:text-[180px] leading-[0.85] text-white"
-            initial={{ y: 40, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            transition={{ type: 'spring', damping: 20, stiffness: 60, delay: 0.5 }}
-          >
-            HYROX
-          </motion.h1>
-        </div>
+        <motion.div
+          className="mb-4 md:mb-6 w-full flex justify-center"
+          initial={{ y: 40, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          transition={{ type: 'spring', damping: 20, stiffness: 60, delay: 0.3 }}
+        >
+          <img
+            src="/water-hyrox-for-dark-bg.svg"
+            alt="WATER HYROX"
+            className="w-full max-w-[280px] sm:max-w-[420px] md:max-w-[700px] lg:max-w-[900px] h-auto"
+          />
+        </motion.div>
 
         <motion.p
           className="font-body text-[10px] sm:text-sm md:text-base text-white/70 tracking-[0.2em] sm:tracking-[0.3em] mb-6 md:mb-8 px-2"
