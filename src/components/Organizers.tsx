@@ -22,7 +22,7 @@ export default function Organizers() {
             className="w-32 h-32 md:w-40 md:h-40 mx-auto object-contain mb-6"
           />
           <h3 className="font-display text-4xl md:text-6xl text-black mb-4">
-            ГО OTTER PROJECT
+            Громадська організація Otter Project
           </h3>
         </motion.div>
 
@@ -33,7 +33,7 @@ export default function Organizers() {
           viewport={{ once: true }}
           transition={{ delay: 0.4 }}
         >
-          Громадська організація OTTER PROJECT — команда ентузіастів, які вірять у силу спорту та спільноти.
+          ГО Otter Project — команда ентузіастів, які вірять у силу спорту та спільноти.
           Ми створюємо події, що надихають, об'єднують та змінюють.
         </motion.p>
 
@@ -46,8 +46,7 @@ export default function Organizers() {
         >
           <p className="font-display text-2xl md:text-3xl text-pink-accent mb-4">НАША МІСІЯ</p>
           <p className="font-body text-base md:text-lg text-white/70 leading-relaxed max-w-xl mx-auto">
-            Популяризувати функціональний спорт у воді, створювати інклюзивний простір для всіх
-            та показувати, що кожен може стати частиною чогось великого.
+            Надихати людей через спорт, витривалість і силу духу, створюючи сучасні та доступні змагання для кожного.
           </p>
         </motion.div>
       </div>

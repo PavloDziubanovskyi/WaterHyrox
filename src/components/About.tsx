@@ -18,7 +18,7 @@ function StatBlock({ value, label, suffix = '' }: { value: number; label: string
     >
       <div className="absolute top-0 left-0 w-full h-1 bg-pink-accent" />
       <div className="font-display text-[72px] md:text-[120px] leading-none text-white mb-2">
-        {count}{suffix}
+        {count}{suffix && <span className="text-[44px] md:text-[64px] align-baseline ml-1 text-white/70">{suffix}</span>}
       </div>
       <p className="font-body text-sm md:text-base text-white/60 tracking-wider uppercase">{label}</p>
     </motion.div>
@@ -30,7 +30,7 @@ export default function About() {
     <SectionWrapper id="about" className="bg-white text-black py-16 md:py-20 px-6 md:px-10">
       <div className="max-w-7xl mx-auto">
         <SectionHeading className="text-black mb-8 md:mb-12">
-          ЦЕ НЕ ПРОСТО<br />ПЛАВАННЯ
+          ЦЕ УНІКАЛЬНИЙ<br />ФОРМАТ
         </SectionHeading>
 
         <motion.p
@@ -40,13 +40,13 @@ export default function About() {
           viewport={{ once: true }}
           transition={{ delay: 0.3 }}
         >
-          WATER HYROX — це унікальний формат, де 400 метрів плавання поєднуються з функціональними станціями та фінальним бігом до гонга. Натхненний міжнародним HYROX, адаптований для воду.
+          WATER HYROX — це перші в Україні змагання, які поєднують плавання, функціональні вправи та біг.
         </motion.p>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6">
           <StatBlock value={400} label="Плавання" suffix="М" />
           <StatBlock value={3} label="Функціональні станції" />
-          <StatBlock value={200} label="Фінальний біг до гонга" suffix="М" />
+          <StatBlock value={200} label="Біг" suffix="М" />
         </div>
       </div>
     </SectionWrapper>

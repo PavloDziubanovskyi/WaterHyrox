@@ -123,10 +123,10 @@ export default function Footer() {
               alt="OTTER PROJECT"
               className="w-10 h-10 object-contain"
             />
-            <span className="font-body text-sm text-white/50">ГО OTTER PROJECT</span>
+            <span className="font-body text-sm text-white/50">ГО Otter Project</span>
           </div>
           <p className="font-body text-xs text-white/20">
-            &copy; 2026 WATER HYROX. Організовано ГО OTTER PROJECT
+            &copy; 2026 WATER HYROX. Організовано ГО Otter Project
           </p>
         </motion.div>
       </div>

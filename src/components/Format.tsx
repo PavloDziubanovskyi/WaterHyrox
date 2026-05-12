@@ -153,11 +153,6 @@ function StageBlock({ stage, index }: { stage: typeof stages[0]; index: number }
         <h3 className="font-display text-[32px] sm:text-[44px] md:text-[64px] lg:text-[80px] xl:text-[96px] leading-[0.9] text-white mb-4 uppercase">
           {stage.title}
         </h3>
-
-        {/* Description */}
-        <p className="font-body text-sm md:text-base text-white/50 max-w-lg leading-relaxed">
-          {stage.description}
-        </p>
       </motion.div>
 
       {/* Video on opposite side (desktop) / below content (mobile) */}

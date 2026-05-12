@@ -21,7 +21,7 @@ export default function Registration() {
     <SectionWrapper id="registration" className="bg-white text-black py-16 md:py-20 px-6 md:px-10">
       <div className="max-w-4xl mx-auto">
         <SectionHeading className="text-black mb-4">
-          ЗАРЕЄСТРУВАТИСЬ
+          ВАРТІСТЬ УЧАСТІ
         </SectionHeading>
 
         <motion.p
@@ -31,7 +31,7 @@ export default function Registration() {
           viewport={{ once: true }}
           transition={{ delay: 0.2 }}
         >
-          до 16 серпня 2026
+          Реєстрація до 16 серпня 2026
         </motion.p>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6 mb-12">
@@ -53,7 +53,7 @@ export default function Registration() {
             viewport={{ once: true }}
             transition={{ delay: 0.4 }}
           >
-            <div className="font-display text-3xl md:text-4xl text-black mb-2">Ветерани/УБД/інвалідність</div>
+            <div className="font-display text-5xl md:text-6xl text-black mb-2">Ветерани</div>
             <div className="font-display text-4xl md:text-5xl text-pink-accent">1 000 грн</div>
           </motion.div>
         </div>

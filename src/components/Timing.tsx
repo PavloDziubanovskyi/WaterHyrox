@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { Timer, Zap } from 'lucide-react';
+import { Zap } from 'lucide-react';
 
 export default function Timing() {
   return (
@@ -44,73 +44,23 @@ export default function Timing() {
           viewport={{ once: true }}
           transition={{ delay: 0.2 }}
         >
-          Точність до сотих секунди. Індивідуальні чіпи. Автоматична фіксація старту, переходів та фінішу.
+          Професійна точність хронометражу. Час починається на старті та зупиняється тільки на фініші.
         </motion.p>
 
-        {/* Three highlight cards */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6 mb-12">
-          <motion.div
-            className="border border-white/10 hover:border-pink-accent transition-colors p-6 md:p-8 group"
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.3 }}
-          >
-            <Timer className="text-pink-accent mb-4" size={32} strokeWidth={1.5} />
-            <div className="font-display text-2xl md:text-3xl text-white mb-2">
-              ЧІП НА НОЗІ
-            </div>
-            <p className="font-body text-sm text-white/50 leading-relaxed">
-              Індивідуальний чіп фіксує кожен ваш крок — від стартового стрибка у воду до удару в гонг
-            </p>
-          </motion.div>
-
-          <motion.div
-            className="border border-white/10 hover:border-pink-accent transition-colors p-6 md:p-8 group"
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.4 }}
-          >
-            <div className="text-pink-accent mb-4 font-display text-4xl">8</div>
-            <div className="font-display text-2xl md:text-3xl text-white mb-2">
-              ТОЧОК ФІКСАЦІЇ
-            </div>
-            <p className="font-body text-sm text-white/50 leading-relaxed">
-              Старт, чотири плавальних відрізки, три станції, фінішна лінія — все автоматично
-            </p>
-          </motion.div>
-
-          <motion.div
-            className="border border-white/10 hover:border-pink-accent transition-colors p-6 md:p-8 group"
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.5 }}
-          >
-            <div className="text-pink-accent mb-4 font-display text-4xl">0.01</div>
-            <div className="font-display text-2xl md:text-3xl text-white mb-2">
-              СЕКУНДИ
-            </div>
-            <p className="font-body text-sm text-white/50 leading-relaxed">
-              Точність хронометражу — як на справжніх професійних змаганнях
-            </p>
-          </motion.div>
-        </div>
-
-        {/* How it works - compact */}
+        {/* Single highlight card - precision */}
         <motion.div
-          className="border-l-2 border-pink-accent pl-6 md:pl-8 py-2"
-          initial={{ opacity: 0, x: -20 }}
-          whileInView={{ opacity: 1, x: 0 }}
+          className="border border-white/10 hover:border-pink-accent transition-colors p-8 md:p-12 max-w-xl"
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ delay: 0.6 }}
+          transition={{ delay: 0.3 }}
         >
-          <div className="font-body text-xs text-pink-accent tracking-[0.3em] uppercase mb-3">
-            Як це працює
+          <div className="text-pink-accent mb-4 font-display text-5xl md:text-7xl">0.01</div>
+          <div className="font-display text-2xl md:text-3xl text-white mb-3">
+            СЕКУНДИ
           </div>
-          <p className="font-body text-sm md:text-base text-white/70 leading-relaxed max-w-3xl">
-            Стрибок у воду — час пішов. Зона перевзування — час іде. Гонг на фініші — час зупинено. Жодних суддів з секундомірами. Тільки чіста математика і ваш результат на табло за мить після фінішу.
+          <p className="font-body text-sm md:text-base text-white/50 leading-relaxed">
+            Професійна точність хронометражу — як на справжніх міжнародних змаганнях
           </p>
         </motion.div>
       </div>
