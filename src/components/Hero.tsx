@@ -2,8 +2,8 @@ import { motion } from 'framer-motion';
 import { useCountdown } from '../hooks/useCountdown';
 import { ChevronDown } from 'lucide-react';
 
-const eventDate = new Date('2026-08-22T09:00:00+03:00');
-const regDeadline = new Date('2026-08-16T23:59:00+03:00');
+const eventDate = new Date('2026-08-08T09:00:00+03:00');
+const regDeadline = new Date('2026-08-01T23:59:00+03:00');
 
 function CounterBlock({ label, timeLeft }: { label: string; timeLeft: { days: number; hours: number; minutes: number; seconds: number } }) {
   return (
@@ -76,7 +76,7 @@ export default function Hero() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 1 }}
         >
-          <span className="font-display text-xl sm:text-2xl md:text-4xl text-white">22 СЕРПНЯ 2026</span>
+          <span className="font-display text-xl sm:text-2xl md:text-4xl text-white">8 СЕРПНЯ 2026</span>
           <span className="hidden md:block w-1.5 h-1.5 rounded-full bg-pink-accent" />
           <span className="font-body text-xs sm:text-sm md:text-base text-white/50 text-center px-4">с. Зашляхом, Тернопільська обл.</span>
         </motion.div>
