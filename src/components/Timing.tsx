@@ -44,7 +44,7 @@ export default function Timing() {
           viewport={{ once: true }}
           transition={{ delay: 0.2 }}
         >
-          Професійна точність хронометражу. Час починається на старті та зупиняється тільки на фініші.
+          Професійна точність хронометражу.
         </motion.p>
 
         {/* Single highlight card - precision */}
@@ -60,7 +60,7 @@ export default function Timing() {
             СЕКУНДИ
           </div>
           <p className="font-body text-sm md:text-base text-white/50 leading-relaxed">
-            Професійна точність хронометражу — як на справжніх міжнародних змаганнях
+            Професійна точність хронометражу
           </p>
         </motion.div>
       </div>

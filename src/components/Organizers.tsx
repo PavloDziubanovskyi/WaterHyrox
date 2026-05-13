@@ -21,7 +21,7 @@ export default function Organizers() {
             alt="OTTER PROJECT"
             className="w-32 h-32 md:w-40 md:h-40 mx-auto object-contain mb-6"
           />
-          <h3 className="font-display text-4xl md:text-6xl text-black mb-4">
+          <h3 className="font-body font-bold text-3xl md:text-5xl text-black mb-4 leading-tight">
             Громадська організація Otter Project
           </h3>
         </motion.div>

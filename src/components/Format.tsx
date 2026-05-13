@@ -11,161 +11,88 @@ const GongIcon = ({ size = 80, strokeWidth = 1.5 }: { size?: number; strokeWidth
 );
 
 const stages = [
-  {
-    icon: Waves,
-    title: '100 М ПЛАВАННЯ',
-    description: 'Перший відрізок плавання в басейні. Рівномірний темп, концентрація на техніці.',
-  },
-  {
-    icon: Flame,
-    title: 'БЕРПІ-СТРИБКИ 40М',
-    description: 'Функціональна станція: берпі з випливанням вперед на 40 метрів. Вибухова сила та витривалість.',
-  },
-  {
-    icon: Waves,
-    title: '100 М ПЛАВАННЯ',
-    description: 'Другий відрізок після першої станції. Контроль дихання та темпу.',
-  },
-  {
-    icon: Dumbbell,
-    title: 'FARMER CARRY 40М',
-    description: 'Перенесення ваги на 40 метрів. Сильний хват, стійка постава, сила корпусу.',
-  },
-  {
-    icon: Waves,
-    title: '100 М ПЛАВАННЯ',
-    description: 'Третій відрізок плавання. Напіввідстань пройдено — час прискорюватись.',
-  },
-  {
-    icon: Footprints,
-    title: 'BEAR CRAWL',
-    description: 'Пересування на чотирьох кінцівках. Координація, сила плечового поясу та кора.',
-  },
-  {
-    icon: Waves,
-    title: '100 М ПЛАВАННЯ',
-    description: 'Останній відрізок плавання. Залиште все в басейні перед фінальним ривком.',
-  },
-  {
-    icon: Flag,
-    title: 'ФІНІШ — БІГ 200М + ГОНГ',
-    description: 'Фінальний спринт 200 метрів до гонга. Все або нічого.',
-    secondaryIcon: GongIcon,
-  },
+  { icon: Waves, title: '100 М ПЛАВАННЯ' },
+  { icon: Flame, title: 'БЕРПІ-СТРИБКИ 40М' },
+  { icon: Waves, title: '100 М ПЛАВАННЯ' },
+  { icon: Dumbbell, title: 'FARMER CARRY 40М' },
+  { icon: Waves, title: '100 М ПЛАВАННЯ' },
+  { icon: Footprints, title: 'BEAR CRAWL' },
+  { icon: Waves, title: '100 М ПЛАВАННЯ' },
+  { icon: Flag, title: 'ФІНІШ — БІГ 200М + ГОНГ', secondaryIcon: GongIcon },
 ];
 
-function TimelineConnector({ containerRef }: { containerRef: React.RefObject<HTMLDivElement | null> }) {
-  const { scrollYProgress } = useScroll({
-    target: containerRef,
-    offset: ['start 0.8', 'end 0.2'],
-  });
-
-  const pathLength = useTransform(scrollYProgress, [0, 1], [0, 1]);
-
-  const viewBoxW = 60;
-  const viewBoxH = stages.length * 100;
-  const midX = 30;
-
-  let d = `M ${midX} 0`;
-  for (let i = 0; i < stages.length; i++) {
-    const y = i * 100;
-    const targetX = i % 2 === 0 ? 50 : 10;
-    d += ` C ${midX} ${y + 25}, ${targetX} ${y + 50}, ${targetX} ${y + 50}`;
-    if (i < stages.length - 1) {
-      const nextY = (i + 1) * 100;
-      d += ` C ${targetX} ${y + 75}, ${midX} ${nextY - 25}, ${midX} ${nextY}`;
-    }
-  }
-
-  return (
-    <svg
-      className="absolute left-0 top-0 w-[60px] h-full hidden lg:block"
-      viewBox={`0 0 ${viewBoxW} ${viewBoxH}`}
-      preserveAspectRatio="none"
-    >
-      <motion.path
-        d={d}
-        fill="none"
-        stroke="#FF2D9B"
-        strokeWidth={3}
-        strokeLinecap="round"
-        style={{ pathLength }}
-      />
-    </svg>
-  );
+interface StageProps {
+  stage: typeof stages[0];
+  index: number;
+  total: number;
 }
 
-function StageBlock({ stage, index }: { stage: typeof stages[0]; index: number }) {
-  const isLeft = index % 2 === 0;
+function StackedStage({ stage, index, total }: StageProps) {
   const IconComponent = stage.icon;
-  const SecondaryIcon = 'secondaryIcon' in stage ? stage.secondaryIcon : null;
+  const SecondaryIcon = stage.secondaryIcon;
+  const stageNumber = index + 1;
 
-  const slideFrom = isLeft ? -80 : 80;
+  // Each card sticks at slightly different top offset to create visible stacked edge
+  const topOffset = 60 + index * 24; // 60px base + 24px per card
 
   return (
-    <div className="relative min-h-[40vh] md:min-h-[50vh] flex items-center py-12 md:py-16">
-      {/* Pink number — always on the outer edge */}
-      <div className={`hidden lg:block absolute top-1/2 -translate-y-1/2 ${isLeft ? 'left-0' : 'right-0'}`}>
-        <motion.span
-          className="font-display text-[200px] leading-none text-pink-accent/10 select-none block"
-          initial={{ opacity: 0, scale: 0.8 }}
-          whileInView={{ opacity: 1, scale: 1 }}
-          viewport={{ once: true, margin: '-100px' }}
-          transition={{ duration: 0.6 }}
-        >
-          {index + 1}
-        </motion.span>
-      </div>
-
-      {/* Content area */}
+    <div
+      className="sticky"
+      style={{
+        top: `${topOffset}px`,
+        // Small margin so cards push each other
+        marginBottom: '24vh',
+        zIndex: index + 1,
+      }}
+    >
       <motion.div
-        className={`w-full lg:w-[55%] ${isLeft ? 'lg:ml-auto lg:pl-16' : 'lg:mr-auto lg:pr-16'}`}
-        initial={{ opacity: 0, x: slideFrom }}
-        whileInView={{ opacity: 1, x: 0 }}
-        viewport={{ once: true, margin: '-100px' }}
-        transition={{ duration: 0.7, ease: [0.25, 0.46, 0.45, 0.94] }}
+        className="relative w-full max-w-6xl mx-auto bg-black border border-white/15 overflow-hidden rounded-lg shadow-2xl"
+        style={{ height: '70vh', minHeight: '480px' }}
+        initial={{ opacity: 0, y: 60 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, amount: 0.3 }}
+        transition={{ duration: 0.6, ease: [0.25, 0.46, 0.45, 0.94] }}
       >
-        {/* Mobile number */}
-        <div className="lg:hidden mb-4">
-          <span className="font-display text-[120px] leading-none text-pink-accent/10 select-none">
-            {index + 1}
+        {/* Giant pink stage number on the right */}
+        <div className="absolute top-0 right-0 h-full flex items-center pr-4 md:pr-12 pointer-events-none overflow-hidden">
+          <span className="font-display text-[180px] sm:text-[260px] md:text-[380px] lg:text-[460px] leading-[0.7] text-pink-accent/10 select-none">
+            {stageNumber}
           </span>
         </div>
 
-        {/* Stage label */}
-        <div className="font-body text-xs tracking-[0.3em] text-pink-accent mb-4 uppercase">
-          Етап {index + 1} / 8
-        </div>
+        {/* Content */}
+        <div className="relative z-10 h-full flex flex-col justify-center px-6 sm:px-10 md:px-16 lg:px-20">
+          {/* Stage label */}
+          <div className="font-body text-xs sm:text-sm tracking-[0.3em] text-pink-accent mb-6 uppercase">
+            Етап {stageNumber} / {total}
+          </div>
 
-        {/* Icon */}
-        <div className="flex items-center gap-3 mb-4 text-white">
-          <IconComponent size={56} strokeWidth={1.5} className="md:hidden" />
-          <IconComponent size={80} strokeWidth={1.5} className="hidden md:block" />
-          {SecondaryIcon && (
-            <>
-              <SecondaryIcon size={56} strokeWidth={1.5} className="md:hidden" />
-              <SecondaryIcon size={80} strokeWidth={1.5} className="hidden md:block" />
-            </>
-          )}
-        </div>
+          {/* Icon */}
+          <div className="flex items-center gap-3 mb-6 text-white">
+            <IconComponent size={44} strokeWidth={1.5} className="md:hidden" />
+            <IconComponent size={80} strokeWidth={1.5} className="hidden md:block" />
+            {SecondaryIcon && (
+              <>
+                <SecondaryIcon size={44} strokeWidth={1.5} className="md:hidden" />
+                <SecondaryIcon size={80} strokeWidth={1.5} className="hidden md:block" />
+              </>
+            )}
+          </div>
 
-        {/* Title */}
-        <h3 className="font-display text-[32px] sm:text-[44px] md:text-[64px] lg:text-[80px] xl:text-[96px] leading-[0.9] text-white mb-4 uppercase">
-          {stage.title}
-        </h3>
-      </motion.div>
+          {/* Title */}
+          <h3 className="font-display text-[36px] sm:text-[56px] md:text-[80px] lg:text-[110px] xl:text-[130px] leading-[0.9] text-white uppercase max-w-4xl">
+            {stage.title}
+          </h3>
 
-      {/* Video on opposite side (desktop) / below content (mobile) */}
-      <motion.div
-        className={`w-full lg:w-[35%] lg:absolute lg:top-1/2 lg:-translate-y-1/2 ${isLeft ? 'lg:left-0' : 'lg:right-0'} mt-8 lg:mt-0`}
-        initial={{ opacity: 0, y: 30 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, margin: '-100px' }}
-        transition={{ duration: 0.7, delay: 0.2, ease: [0.25, 0.46, 0.45, 0.94] }}
-      >
-        <div className="w-full aspect-video bg-white/5 border border-white/10 flex items-center justify-center">
-          <span className="font-body text-sm text-white/20 tracking-wider">ВІДЕО НЕЗАБАРОМ</span>
-          {/* TODO: replace with actual video URL */}
+          {/* Bottom hint */}
+          <div className="absolute bottom-6 md:bottom-8 left-6 sm:left-10 md:left-16 lg:left-20 right-6 sm:right-10 md:right-16 lg:right-20 flex justify-between items-end">
+            <div className="font-body text-xs text-white/30 tracking-wider uppercase">
+              {stageNumber < total ? 'Гортайте далі' : 'Фініш'}
+            </div>
+            <div className="font-display text-sm sm:text-base text-white/30">
+              {stageNumber} / {total}
+            </div>
+          </div>
         </div>
       </motion.div>
     </div>
@@ -176,7 +103,7 @@ export default function Format() {
   const containerRef = useRef<HTMLDivElement>(null);
 
   return (
-    <section id="format" className="bg-black relative" ref={containerRef}>
+    <section id="format" className="bg-black relative">
       {/* Section header */}
       <div className="px-4 sm:px-6 md:px-10 pt-20 sm:pt-24 md:pt-32 pb-8 md:pb-12 max-w-7xl mx-auto">
         <motion.h2
@@ -199,19 +126,17 @@ export default function Format() {
         </motion.p>
       </div>
 
-      {/* Zigzag timeline */}
-      <div className="relative px-6 md:px-10 max-w-7xl mx-auto">
-        {/* Scroll-drawn connector line */}
-        <TimelineConnector containerRef={containerRef} />
-
-        {/* Stage blocks */}
-        {stages.map((stage, i) => (
-          <StageBlock key={i} stage={stage} index={i} />
-        ))}
+      {/* Stacked cards container */}
+      <div ref={containerRef} className="relative px-4 sm:px-6 md:px-10 pb-32">
+        <div className="relative">
+          {stages.map((stage, i) => (
+            <StackedStage key={i} stage={stage} index={i} total={stages.length} />
+          ))}
+        </div>
       </div>
 
       {/* Veteran modifications notes */}
-      <div className="px-6 md:px-10 py-8 md:py-10 max-w-7xl mx-auto">
+      <div className="px-6 md:px-10 py-12 md:py-16 max-w-7xl mx-auto">
         <motion.div
           className="border-l-2 border-pink-accent/60 pl-6 py-2 space-y-3"
           initial={{ opacity: 0, x: -20 }}
