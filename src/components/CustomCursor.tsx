@@ -51,31 +51,5 @@ export default function CustomCursor() {
     };
   }, [cursorX, cursorY, isVisible]);
 
-  if (typeof window !== 'undefined' && window.innerWidth < 768) return null;
-
-  return (
-    <>
-      <motion.div
-        className="fixed top-0 left-0 pointer-events-none z-[9998] rounded-full"
-        style={{
-          x,
-          y,
-          translateX: -8,
-          translateY: -8,
-        }}
-        animate={{
-          width: isHovering ? 48 : 16,
-          height: isHovering ? 48 : 16,
-          backgroundColor: isHovering ? 'rgba(255, 45, 155, 0.3)' : '#FF2D9B',
-          translateX: isHovering ? -24 : -8,
-          translateY: isHovering ? -24 : -8,
-          mixBlendMode: isHovering ? 'difference' : 'normal' as const,
-        }}
-        transition={{ type: 'spring', damping: 20, stiffness: 300 }}
-      />
-      {!isVisible && (
-        <style>{`* { cursor: auto !important; }`}</style>
-      )}
-    </>
-  );
+  return null;
 }

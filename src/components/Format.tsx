@@ -1,7 +1,8 @@
-import { motion } from 'framer-motion';
-import { Waves, Flame, Dumbbell, Footprints, Flag } from 'lucide-react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { useState } from 'react';
+import { Waves, Flame, Dumbbell, Footprints, Flag, ChevronLeft, ChevronRight } from 'lucide-react';
 
-const GongIcon = ({ size = 80, strokeWidth = 1.5 }: { size?: number; strokeWidth?: number }) => (
+const GongIcon = ({ size = 64, strokeWidth = 1.5 }: { size?: number; strokeWidth?: number }) => (
   <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={strokeWidth} strokeLinecap="round" strokeLinejoin="round">
     <circle cx="12" cy="13" r="8" />
     <line x1="12" y1="5" x2="12" y2="1" />
@@ -10,117 +11,65 @@ const GongIcon = ({ size = 80, strokeWidth = 1.5 }: { size?: number; strokeWidth
 );
 
 const stages = [
-  { icon: Waves, title: '100 М ПЛАВАННЯ' },
-  { icon: Flame, title: 'БЕРПІ-СТРИБКИ 40М' },
-  { icon: Waves, title: '100 М ПЛАВАННЯ' },
-  { icon: Dumbbell, title: 'FARMER CARRY 40М' },
-  { icon: Waves, title: '100 М ПЛАВАННЯ' },
-  { icon: Footprints, title: 'BEAR CRAWL' },
-  { icon: Waves, title: '100 М ПЛАВАННЯ' },
-  { icon: Flag, title: 'ФІНІШ — БІГ 200М + ГОНГ', secondaryIcon: GongIcon },
+  { icon: Waves, title: '100 М ПЛАВАННЯ', subtitle: 'Перший відрізок' },
+  { icon: Flame, title: 'БЕРПІ-СТРИБКИ 40М', subtitle: 'Станція 1*' },
+  { icon: Waves, title: '100 М ПЛАВАННЯ', subtitle: 'Другий відрізок' },
+  { icon: Dumbbell, title: 'FARMER CARRY 40М', subtitle: 'Станція 2**' },
+  { icon: Waves, title: '100 М ПЛАВАННЯ', subtitle: 'Третій відрізок' },
+  { icon: Footprints, title: 'BEAR CRAWL', subtitle: 'Станція 3' },
+  { icon: Waves, title: '100 М ПЛАВАННЯ', subtitle: 'Четвертий відрізок' },
+  { icon: Flag, title: 'ФІНІШ — БІГ 200М + ГОНГ', subtitle: 'Фінальний ривок', secondaryIcon: GongIcon },
 ];
 
-interface StageProps {
-  stage: typeof stages[0];
-  index: number;
-  total: number;
-}
-
-function StackedStage({ stage, index, total }: StageProps) {
-  const IconComponent = stage.icon;
-  const SecondaryIcon = stage.secondaryIcon;
-  const stageNumber = index + 1;
-
-  // Each card sticks at slightly different top offset to create visible stacked edge
-  const topOffset = 60 + index * 20;
-
-  return (
-    // Outer wrapper takes 100vh height — this gives each card its own "scroll page"
-    // so that the user MUST scroll a full viewport before next card slides over
-    <div className="h-screen w-full relative">
-      <div
-        className="sticky w-full"
-        style={{
-          top: `${topOffset}px`,
-          zIndex: index + 1,
-        }}
-      >
-        <motion.div
-          className="relative w-full max-w-6xl mx-auto bg-black border border-white/15 overflow-hidden rounded-lg shadow-2xl"
-          style={{ height: 'calc(100vh - 140px)', minHeight: '480px' }}
-          initial={{ opacity: 0, y: 60 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.3 }}
-          transition={{ duration: 0.6, ease: [0.25, 0.46, 0.45, 0.94] }}
-        >
-          {/* Giant pink stage number on the right */}
-          <div className="absolute top-0 right-0 h-full flex items-center pr-4 md:pr-12 pointer-events-none overflow-hidden">
-            <span className="font-display text-[160px] sm:text-[240px] md:text-[360px] lg:text-[440px] leading-[0.7] text-pink-accent/10 select-none">
-              {stageNumber}
-            </span>
-          </div>
-
-          {/* Content - left side (text) */}
-          <div className="relative z-10 h-full grid grid-cols-1 lg:grid-cols-[1.3fr_1fr] gap-6 lg:gap-10">
-            {/* Left column: Stage info */}
-            <div className="flex flex-col justify-center px-6 sm:px-10 md:px-14 lg:px-16 pt-8 lg:pt-0">
-              {/* Stage label */}
-              <div className="font-body text-xs sm:text-sm tracking-[0.3em] text-pink-accent mb-4 md:mb-6 uppercase">
-                Етап {stageNumber} / {total}
-              </div>
-
-              {/* Icon */}
-              <div className="flex items-center gap-3 mb-4 md:mb-6 text-white">
-                <IconComponent size={40} strokeWidth={1.5} className="md:hidden" />
-                <IconComponent size={72} strokeWidth={1.5} className="hidden md:block" />
-                {SecondaryIcon && (
-                  <>
-                    <SecondaryIcon size={40} strokeWidth={1.5} className="md:hidden" />
-                    <SecondaryIcon size={72} strokeWidth={1.5} className="hidden md:block" />
-                  </>
-                )}
-              </div>
-
-              {/* Title */}
-              <h3 className="font-display text-[32px] sm:text-[48px] md:text-[64px] lg:text-[80px] xl:text-[96px] leading-[0.9] text-white uppercase">
-                {stage.title}
-              </h3>
-            </div>
-
-            {/* Right column: Video placeholder */}
-            <div className="flex items-center justify-center px-6 sm:px-10 md:px-12 lg:pr-16 lg:pl-0 pb-8 lg:pb-0">
-              <div className="w-full aspect-video bg-white/5 border border-white/10 flex items-center justify-center relative overflow-hidden">
-                {/* TODO: replace with actual video URL */}
-                <div className="absolute inset-0 flex flex-col items-center justify-center gap-2">
-                  <div className="w-12 h-12 md:w-16 md:h-16 rounded-full border-2 border-white/20 flex items-center justify-center">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" className="text-white/30 ml-1">
-                      <path d="M8 5v14l11-7z" />
-                    </svg>
-                  </div>
-                  <span className="font-body text-xs md:text-sm text-white/20 tracking-wider mt-2">
-                    Відео незабаром
-                  </span>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          {/* Bottom hint - absolute over the whole card */}
-          <div className="absolute bottom-4 md:bottom-6 left-6 sm:left-10 md:left-14 lg:left-16 right-6 sm:right-10 md:right-14 lg:right-16 flex justify-between items-end pointer-events-none">
-            <div className="font-body text-xs text-white/30 tracking-wider uppercase">
-              {stageNumber < total ? 'Гортайте далі' : 'Фініш'}
-            </div>
-            <div className="font-display text-sm sm:text-base text-white/30">
-              {stageNumber} / {total}
-            </div>
-          </div>
-        </motion.div>
-      </div>
-    </div>
-  );
-}
+const slideVariants = {
+  enter: (dir: number) => ({
+    x: dir > 0 ? '100%' : '-100%',
+    opacity: 0,
+    scale: 0.92,
+  }),
+  center: {
+    x: 0,
+    opacity: 1,
+    scale: 1,
+  },
+  exit: (dir: number) => ({
+    x: dir > 0 ? '-60%' : '60%',
+    opacity: 0,
+    scale: 0.88,
+  }),
+};
 
 export default function Format() {
+  const [current, setCurrent] = useState(0);
+  const [direction, setDirection] = useState(0);
+
+  const goTo = (index: number) => {
+    setDirection(index > current ? 1 : -1);
+    setCurrent(index);
+  };
+
+  const prev = () => {
+    if (current > 0) goTo(current - 1);
+  };
+
+  const next = () => {
+    if (current < stages.length - 1) goTo(current + 1);
+  };
+
+  // Keyboard navigation
+  useState(() => {
+    const handleKey = (e: KeyboardEvent) => {
+      if (e.key === 'ArrowLeft') prev();
+      if (e.key === 'ArrowRight') next();
+    };
+    window.addEventListener('keydown', handleKey);
+    return () => window.removeEventListener('keydown', handleKey);
+  });
+
+  const stage = stages[current];
+  const IconComponent = stage.icon;
+  const SecondaryIcon = stage.secondaryIcon;
+
   return (
     <section id="format" className="bg-black relative">
       {/* Section header */}
@@ -145,14 +94,152 @@ export default function Format() {
         </motion.p>
       </div>
 
-      {/* Stacked cards container - each card occupies one viewport height of scroll */}
-      <div className="relative px-4 sm:px-6 md:px-10 pb-24">
-        {stages.map((stage, i) => (
-          <StackedStage key={i} stage={stage} index={i} total={stages.length} />
-        ))}
+      {/* Slider */}
+      <div className="relative px-4 sm:px-6 md:px-10 pb-8 max-w-7xl mx-auto">
+
+        {/* Progress bar */}
+        <div className="w-full h-0.5 bg-white/10 mb-6 rounded-full overflow-hidden">
+          <motion.div
+            className="h-full bg-pink-accent rounded-full"
+            animate={{ width: `${((current + 1) / stages.length) * 100}%` }}
+            transition={{ duration: 0.4, ease: 'easeOut' }}
+          />
+        </div>
+
+        {/* Card container with overflow hidden for slide effect */}
+        <div className="relative overflow-hidden rounded-xl" style={{ height: 'min(75vh, 600px)', minHeight: '460px' }}>
+
+          {/* Background stack — showing 2 cards behind for depth */}
+          {[2, 1].map((offset) => {
+            const idx = current + offset;
+            if (idx >= stages.length) return null;
+            return (
+              <div
+                key={`stack-${offset}`}
+                className="absolute inset-0 bg-white/5 border border-white/10 rounded-xl"
+                style={{
+                  transform: `translateY(${offset * 8}px) scale(${1 - offset * 0.025})`,
+                  zIndex: 10 - offset,
+                  opacity: 1 - offset * 0.3,
+                }}
+              />
+            );
+          })}
+
+          {/* Main sliding card */}
+          <AnimatePresence initial={false} custom={direction} mode="popLayout">
+            <motion.div
+              key={current}
+              custom={direction}
+              variants={slideVariants}
+              initial="enter"
+              animate="center"
+              exit="exit"
+              transition={{
+                x: { type: 'spring', stiffness: 280, damping: 28 },
+                opacity: { duration: 0.25 },
+                scale: { duration: 0.35 },
+              }}
+              className="absolute inset-0 bg-black border border-white/20 rounded-xl overflow-hidden z-20"
+            >
+              {/* Giant number */}
+              <div className="absolute top-0 right-0 h-full flex items-center pr-4 md:pr-12 pointer-events-none overflow-hidden">
+                <span className="font-display text-[140px] sm:text-[220px] md:text-[340px] lg:text-[420px] leading-[0.7] text-pink-accent/8 select-none">
+                  {current + 1}
+                </span>
+              </div>
+
+              {/* Content grid */}
+              <div className="h-full grid grid-cols-1 lg:grid-cols-[1.2fr_1fr] relative z-10">
+                {/* Left: text */}
+                <div className="flex flex-col justify-center px-6 sm:px-10 md:px-14 pt-8 lg:pt-0 pb-16 lg:pb-0">
+                  <div className="font-body text-xs tracking-[0.3em] text-pink-accent mb-4 uppercase">
+                    Етап {current + 1} / {stages.length} — {stage.subtitle}
+                  </div>
+                  <div className="flex items-center gap-3 mb-5 text-white">
+                    <IconComponent size={36} strokeWidth={1.5} className="md:hidden" />
+                    <IconComponent size={64} strokeWidth={1.5} className="hidden md:block" />
+                    {SecondaryIcon && (
+                      <>
+                        <SecondaryIcon size={36} strokeWidth={1.5} className="md:hidden" />
+                        <SecondaryIcon size={64} strokeWidth={1.5} className="hidden md:block" />
+                      </>
+                    )}
+                  </div>
+                  <h3 className="font-display text-[32px] sm:text-[44px] md:text-[60px] lg:text-[72px] xl:text-[86px] leading-[0.9] text-white uppercase">
+                    {stage.title}
+                  </h3>
+                </div>
+
+                {/* Right: video placeholder */}
+                <div className="flex items-center justify-center px-6 sm:px-10 md:px-10 lg:pr-12 lg:pl-0 pb-16 lg:pb-0 pt-0 lg:pt-0">
+                  <div className="w-full aspect-video bg-white/5 border border-white/10 rounded-lg flex flex-col items-center justify-center gap-3 relative overflow-hidden group">
+                    {/* TODO: replace with actual video URL */}
+                    <div className="w-14 h-14 rounded-full border-2 border-white/20 flex items-center justify-center group-hover:border-pink-accent transition-colors duration-300">
+                      <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" className="text-white/30 ml-1 group-hover:text-pink-accent transition-colors duration-300">
+                        <path d="M8 5v14l11-7z" />
+                      </svg>
+                    </div>
+                    <span className="font-body text-xs text-white/20 tracking-wider">Відео незабаром</span>
+                  </div>
+                </div>
+              </div>
+            </motion.div>
+          </AnimatePresence>
+        </div>
+
+        {/* Navigation controls */}
+        <div className="flex items-center justify-between mt-6">
+          {/* Arrow buttons */}
+          <div className="flex items-center gap-3">
+            <motion.button
+              onClick={prev}
+              disabled={current === 0}
+              className="w-12 h-12 sm:w-14 sm:h-14 rounded-full border-2 border-white/20 flex items-center justify-center text-white disabled:opacity-20 disabled:cursor-not-allowed hover:border-pink-accent hover:text-pink-accent transition-colors duration-300"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+            >
+              <ChevronLeft size={22} />
+            </motion.button>
+
+            <motion.button
+              onClick={next}
+              disabled={current === stages.length - 1}
+              className="w-12 h-12 sm:w-14 sm:h-14 rounded-full border-2 border-white/20 flex items-center justify-center text-white disabled:opacity-20 disabled:cursor-not-allowed hover:border-pink-accent hover:text-pink-accent transition-colors duration-300"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+            >
+              <ChevronRight size={22} />
+            </motion.button>
+          </div>
+
+          {/* Dot indicators */}
+          <div className="flex items-center gap-2">
+            {stages.map((_, i) => (
+              <button
+                key={i}
+                onClick={() => goTo(i)}
+                className="relative h-2 rounded-full transition-all duration-300 overflow-hidden"
+                style={{ width: i === current ? '32px' : '8px' }}
+              >
+                <span className={`absolute inset-0 rounded-full transition-colors duration-300 ${i === current ? 'bg-pink-accent' : 'bg-white/25 hover:bg-white/50'}`} />
+              </button>
+            ))}
+          </div>
+
+          {/* Counter */}
+          <div className="font-display text-xl sm:text-2xl text-white/40">
+            {String(current + 1).padStart(2, '0')} / {String(stages.length).padStart(2, '0')}
+          </div>
+        </div>
+
+        {/* Keyboard hint */}
+        <div className="text-center mt-4">
+          <span className="font-body text-xs text-white/20 tracking-widest">← → для навігації</span>
+        </div>
       </div>
 
-      {/* Veteran modifications notes */}
+      {/* Veteran modifications */}
       <div className="px-6 md:px-10 py-12 md:py-16 max-w-7xl mx-auto">
         <motion.div
           className="border-l-2 border-pink-accent/60 pl-6 py-2 space-y-3"

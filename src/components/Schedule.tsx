@@ -12,43 +12,40 @@ const scheduleItems = [
 export default function Schedule() {
   return (
     <SectionWrapper id="schedule" className="bg-black py-16 md:py-20 px-6 md:px-10">
-      <div className="max-w-4xl mx-auto">
+      <div className="max-w-3xl mx-auto text-center">
         <SectionHeading className="text-white mb-12 md:mb-16">
           РОЗКЛАД
         </SectionHeading>
 
-        <div className="relative">
-          <div className="absolute left-[60px] md:left-[80px] top-0 bottom-0 w-px bg-pink-accent/20" />
-
-          <div className="space-y-0">
-            {scheduleItems.map((item, i) => (
-              <motion.div
-                key={i}
-                className={`flex items-start gap-6 md:gap-10 relative ${item.isSubItem ? 'pl-[84px] md:pl-[104px]' : ''}`}
-                initial={{ opacity: 0, x: -30 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.12 }}
-              >
-                {!item.isSubItem && (
-                  <>
-                    <div className="font-display text-2xl md:text-4xl text-white/80 w-[56px] md:w-[72px] text-right flex-shrink-0 pt-1">
-                      {item.time}
-                    </div>
-                    <div className="relative flex-shrink-0 mt-3">
-                      <div className="w-3 h-3 rounded-full bg-pink-accent" />
-                    </div>
-                  </>
-                )}
-
-                <div className={`${item.isSubItem ? '' : 'pt-1'}`}>
-                  <p className={`font-body ${item.isFinal ? 'text-pink-accent font-semibold text-lg md:text-xl' : item.isSubItem ? 'text-white/40 text-sm italic' : 'text-white text-base md:text-lg'}`}>
-                    {item.event}
-                  </p>
+        <div className="space-y-6 md:space-y-8">
+          {scheduleItems.map((item, i) => (
+            <motion.div
+              key={i}
+              className={`flex flex-col items-center gap-2 ${item.isSubItem ? 'opacity-60' : ''}`}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: item.isSubItem ? 0.6 : 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: i * 0.12 }}
+            >
+              {item.time && (
+                <div className="font-display text-4xl sm:text-5xl md:text-6xl text-pink-accent">
+                  {item.time}
                 </div>
-              </motion.div>
-            ))}
-          </div>
+              )}
+              <p className={`font-body text-base sm:text-lg md:text-xl leading-relaxed max-w-xl mx-auto ${
+                item.isFinal
+                  ? 'text-pink-accent font-semibold text-xl md:text-2xl'
+                  : item.isSubItem
+                  ? 'text-white/60 text-sm sm:text-base italic'
+                  : 'text-white'
+              }`}>
+                {item.event}
+              </p>
+              {!item.isSubItem && !item.isFinal && i < scheduleItems.length - 2 && (
+                <div className="w-px h-8 md:h-10 bg-pink-accent/30 mt-2" />
+              )}
+            </motion.div>
+          ))}
         </div>
 
         <motion.div
@@ -58,7 +55,7 @@ export default function Schedule() {
           viewport={{ once: true }}
           transition={{ delay: 0.6 }}
         >
-          <p className="font-body text-sm text-white/50">
+          <p className="font-body text-sm text-white/50 text-center">
             Смуга для розминки доступна протягом усього дня
           </p>
         </motion.div>

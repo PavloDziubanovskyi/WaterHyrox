@@ -19,15 +19,8 @@
     background: #0A0A0A;
     color: #FFFFFF;
     overflow-x: hidden;
-    cursor: none;
     width: 100%;
     max-width: 100vw;
-  }
-
-  @media (max-width: 768px) {
-    body {
-      cursor: auto;
-    }
   }
 
   /* Prevent horizontal overflow on mobile */

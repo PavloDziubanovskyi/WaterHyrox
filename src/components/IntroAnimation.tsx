@@ -6,130 +6,80 @@ interface IntroAnimationProps {
 }
 
 export default function IntroAnimation({ onComplete }: IntroAnimationProps) {
-  const [phase, setPhase] = useState<'assembling' | 'holding' | 'splitting' | 'complete'>('assembling');
-
-  const waterLetters = 'WATER'.split('');
-  const hyroxLetters = 'HYROX'.split('');
+  const [phase, setPhase] = useState<'entering' | 'holding' | 'exiting' | 'complete'>('entering');
 
   useEffect(() => {
-    const holdTimer = setTimeout(() => setPhase('holding'), 1800);
-    const splitTimer = setTimeout(() => setPhase('splitting'), 2300);
+    const holdTimer = setTimeout(() => setPhase('holding'), 1400);
+    const exitTimer = setTimeout(() => setPhase('exiting'), 2000);
     const completeTimer = setTimeout(() => {
       setPhase('complete');
       onComplete();
-    }, 3000);
+    }, 2700);
     return () => {
       clearTimeout(holdTimer);
-      clearTimeout(splitTimer);
+      clearTimeout(exitTimer);
       clearTimeout(completeTimer);
     };
   }, [onComplete]);
-
-  const getLetterInitial = (i: number) => {
-    const angle = (i % 2 === 0 ? 1 : -1) * (30 + Math.random() * 30);
-    const dist = 300 + Math.random() * 200;
-    const rad = (angle * Math.PI) / 180;
-    return {
-      x: Math.cos(rad) * dist * (Math.random() > 0.5 ? 1 : -1),
-      y: Math.sin(rad) * dist * (Math.random() > 0.5 ? 1 : -1),
-      opacity: 0,
-      rotate: (Math.random() - 0.5) * 180,
-      scale: 0.3,
-    };
-  };
 
   return (
     <AnimatePresence>
       {phase !== 'complete' && (
         <motion.div
-          className="fixed inset-0 z-[9999] flex items-center justify-center bg-black"
+          className="fixed inset-0 z-[9999] flex items-center justify-center bg-white overflow-hidden"
           exit={{ opacity: 0 }}
-          transition={{ duration: 0.3 }}
+          transition={{ duration: 0.4 }}
         >
+          {/* Left curtain exits left */}
           <motion.div
-            className="absolute bg-black"
-            initial={false}
-            animate={
-              phase === 'splitting'
-                ? { y: '-100%' }
-                : { y: '0%' }
-            }
-            transition={{ duration: 0.5, ease: [0.76, 0, 0.24, 1] }}
-            style={{ top: 0, left: 0, right: 0, height: '50%', transformOrigin: 'top' }}
+            className="absolute left-0 top-0 bottom-0 w-1/2 bg-white z-10"
+            animate={phase === 'exiting' ? { x: '-100%' } : { x: '0%' }}
+            transition={{ duration: 0.55, ease: [0.76, 0, 0.24, 1] }}
           />
+          {/* Right curtain exits right */}
           <motion.div
-            className="absolute bg-black"
-            initial={false}
-            animate={
-              phase === 'splitting'
-                ? { y: '100%' }
-                : { y: '0%' }
-            }
-            transition={{ duration: 0.5, ease: [0.76, 0, 0.24, 1] }}
-            style={{ bottom: 0, left: 0, right: 0, height: '50%', transformOrigin: 'bottom' }}
+            className="absolute right-0 top-0 bottom-0 w-1/2 bg-white z-10"
+            animate={phase === 'exiting' ? { x: '100%' } : { x: '0%' }}
+            transition={{ duration: 0.55, ease: [0.76, 0, 0.24, 1] }}
           />
 
-          <div className="relative z-10 text-center">
-            <div className="flex justify-center mb-2">
-              {waterLetters.map((letter, i) => (
-                <motion.span
-                  key={`w-${i}`}
-                  initial={getLetterInitial(i)}
-                  animate={{
-                    x: 0,
-                    y: 0,
-                    opacity: 1,
-                    rotate: 0,
-                    scale: 1,
-                  }}
-                  transition={{
-                    delay: i * 0.08,
-                    type: 'spring' as const,
-                    damping: 15,
-                    stiffness: 80,
-                    mass: 0.8,
-                  }}
-                  className="font-display text-[80px] md:text-[140px] leading-none text-white"
-                >
-                  {letter}
-                </motion.span>
-              ))}
-            </div>
-            <div className="flex justify-center">
-              {hyroxLetters.map((letter, i) => (
-                <motion.span
-                  key={`h-${i}`}
-                  initial={getLetterInitial(i + 5)}
-                  animate={{
-                    x: 0,
-                    y: 0,
-                    opacity: 1,
-                    rotate: 0,
-                    scale: 1,
-                  }}
-                  transition={{
-                    delay: 0.4 + i * 0.08,
-                    type: 'spring' as const,
-                    damping: 15,
-                    stiffness: 80,
-                    mass: 0.8,
-                  }}
-                  className="font-display text-[80px] md:text-[140px] leading-none text-white"
-                >
-                  {letter}
-                </motion.span>
-              ))}
-            </div>
+          {/* Logo: WATER from left, HYROX from right */}
+          <div className="relative z-20 flex flex-col items-center leading-none select-none">
+            {/* WATER — comes from left */}
+            <motion.div
+              className="font-display text-[72px] sm:text-[110px] md:text-[160px] lg:text-[200px] leading-[0.85] text-black"
+              initial={{ x: '-120%', opacity: 0 }}
+              animate={
+                phase === 'entering' || phase === 'holding' || phase === 'exiting'
+                  ? { x: '0%', opacity: 1 }
+                  : { x: '-120%', opacity: 0 }
+              }
+              transition={{ duration: 0.7, ease: [0.25, 0.46, 0.45, 0.94] }}
+            >
+              WATER
+            </motion.div>
+
+            {/* HYROX — comes from right */}
+            <motion.div
+              className="font-display text-[72px] sm:text-[110px] md:text-[160px] lg:text-[200px] leading-[0.85] text-black"
+              initial={{ x: '120%', opacity: 0 }}
+              animate={
+                phase === 'entering' || phase === 'holding' || phase === 'exiting'
+                  ? { x: '0%', opacity: 1 }
+                  : { x: '120%', opacity: 0 }
+              }
+              transition={{ duration: 0.7, ease: [0.25, 0.46, 0.45, 0.94], delay: 0.08 }}
+            >
+              HYROX
+            </motion.div>
           </div>
 
+          {/* Skip button */}
           <button
-            onClick={() => {
-              setPhase('complete');
-              onComplete();
-            }}
-            className="absolute top-6 right-6 z-20 text-white/40 text-sm font-body tracking-widest hover:text-white transition-colors"
+            onClick={() => { setPhase('complete'); onComplete(); }}
+            className="absolute bottom-8 right-8 z-20 text-black/30 text-xs font-body tracking-widest hover:text-black/60 transition-colors uppercase"
           >
-            ПРОПУСТИТИ
+            Пропустити
           </button>
         </motion.div>
       )}
