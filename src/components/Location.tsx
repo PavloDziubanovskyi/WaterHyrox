@@ -78,7 +78,7 @@ export default function Location() {
               </div>
             </motion.div>
 
-            {/* Право: карта */}
+              {/* Право: карта + кнопка маршруту */}
             <motion.div
               className="flex flex-col gap-4"
               initial={{ opacity: 0, x: 30 }}
@@ -88,16 +88,27 @@ export default function Location() {
             >
               <div className="w-full flex-1 min-h-[360px] bg-white/5 border border-white/10 overflow-hidden">
                 <iframe
-                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2570!2d25.6!3d49.8!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNDnCsDQ4JzAwLjAiTiAyNcKwMzYnMDAuMCJF!5e0!3m2!1suk!2sua!4v1"
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2574.5!2d25.765!3d49.8375!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x472e5b3b3b3b3b3b%3A0x0!2z0KHQtdC70L4g0JfQsNGI0LvRj9GF0L7QvCwg0JLRg9C70LjRhtGPINC_0ZbQtNC70ZbRgdC90LAg2g!5e0!3m2!1suk!2sua!4v1"
                   width="100%"
-                  height="100%"
-                  style={{ border: 0, minHeight: '360px' }}
+                  height="360"
+                  style={{ border: 0 }}
                   allowFullScreen
                   loading="lazy"
                   referrerPolicy="no-referrer-when-downgrade"
                   title="Локація змагань"
                 />
               </div>
+
+              {/* Кнопка маршруту */}
+              <a
+                href="https://www.google.com/maps/dir/?api=1&destination=49.8375,25.765&destination_place_id=Зашляхом+вул.+Підлісна+2+Тернопільська+обл"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center justify-center gap-3 w-full py-4 border-2 border-white/20 hover:border-pink-accent text-white hover:text-pink-accent font-display text-lg tracking-wider transition-colors duration-300 group"
+              >
+                <Navigation size={20} className="group-hover:text-pink-accent transition-colors" />
+                ПРОКЛАСТИ МАРШРУТ
+              </a>
             </motion.div>
           </div>
         </motion.div>
