@@ -18,14 +18,30 @@ export default function Location() {
             viewport={{ once: true }}
             transition={{ delay: 0.2 }}
           >
-            <div className="flex items-center gap-3 mb-6">
-              <MapPin className="text-pink-accent" size={28} />
-              <span className="font-display text-2xl md:text-3xl text-white">Розважальний комплекс</span>
+            {/* Генеральний партнер */}
+            <div className="inline-flex items-center gap-2 border border-pink-accent/40 px-4 py-2 mb-6 w-fit">
+              <span className="font-body text-xs text-pink-accent tracking-[0.3em] uppercase">
+                Генеральний партнер змагань
+              </span>
             </div>
-            <h3 className="font-display text-4xl md:text-6xl text-pink-accent mb-6">
+
+            {/* Fungi Farm logo */}
+            <div className="mb-6">
+              <img
+                src="/fungi-farm-logo.png"
+                alt="Fungi Farm"
+                className="h-24 md:h-28 w-auto object-contain"
+              />
+            </div>
+
+            <div className="flex items-center gap-3 mb-3">
+              <MapPin className="text-pink-accent flex-shrink-0" size={22} />
+              <span className="font-display text-xl md:text-2xl text-white">Розважальний комплекс</span>
+            </div>
+            <h3 className="font-display text-4xl md:text-6xl text-pink-accent mb-4">
               «Ловивітер»
             </h3>
-            <p className="font-body text-lg md:text-xl text-white/60 leading-relaxed">
+            <p className="font-body text-base md:text-lg text-white/60 leading-relaxed">
               с. Зашляхом, вул. Підлісна 2, Тернопільська обл., Кременецький р-н
             </p>
           </motion.div>
