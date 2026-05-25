@@ -78,10 +78,10 @@ export default function Location() {
 
             {/* Карта + кнопка */}
             <div className="flex flex-col gap-4">
-              <div className="w-full border border-white/10 overflow-hidden" style={{ height: '300px' }}>
+              <div className="w-full aspect-video border border-white/10 overflow-hidden">
                 <iframe
                   src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1071.9180709636946!2d25.743862619689715!3d49.8121093183993!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x472fd790c56e267f%3A0x1f3a317fd0dfac!2z0JvQntCS0JjQktCG0KLQldCg!5e1!3m2!1suk!2sua!4v1779738116247!5m2!1suk!2sua"
-                  style={{ border: 0, display: 'block', width: '100%', height: '300px' }}
+                  style={{ border: 0, display: 'block', width: '100%', height: '100%' }}
                   allowFullScreen
                   loading="lazy"
                   referrerPolicy="no-referrer-when-downgrade"
@@ -104,10 +104,10 @@ export default function Location() {
       </SectionWrapper>
 
       {/* ══ СПОНСОРИ ══ */}
-      <SectionWrapper id="sponsors" className="bg-black py-16 md:py-20 px-6 md:px-10 border-t border-white/10">
+      <SectionWrapper id="sponsors" className="bg-white text-black py-16 md:py-20 px-6 md:px-10">
         <div className="max-w-7xl mx-auto">
 
-          <SectionHeading className="text-white mb-12 md:mb-16 text-center">
+          <SectionHeading className="text-black mb-12 md:mb-16">
             СПОНСОРИ
           </SectionHeading>
 
@@ -137,14 +137,14 @@ export default function Location() {
             {Array.from({ length: 6 }, (_, i) => (
               <motion.div
                 key={i}
-                className="aspect-[3/2] bg-white/5 border border-white/10 flex items-center justify-center hover:border-pink-accent/50 transition-colors duration-300"
+                className="aspect-[3/2] bg-black/5 border border-black/10 flex items-center justify-center hover:border-pink-accent/50 transition-colors duration-300"
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: (i + 2) * 0.06 }}
                 whileHover={{ scale: 1.03 }}
               >
-                <span className="font-display text-2xl text-white/15">LOGO</span>
+                <span className="font-display text-2xl text-black/15">LOGO</span>
               </motion.div>
             ))}
           </div>

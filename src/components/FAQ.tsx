@@ -48,9 +48,9 @@ function FAQItem({ item, isOpen, onToggle }: { item: typeof faqItems[0]; isOpen:
     >
       <button
         onClick={onToggle}
-        className="w-full flex items-center justify-between py-6 text-left group cursor-hover"
+        className="w-full flex items-center justify-between py-6 text-left group cursor-hover border-b border-white/10"
       >
-        <span className="font-body text-base md:text-lg text-black/80 pr-8 group-hover:text-black transition-colors">
+        <span className="font-body text-base md:text-lg text-white/80 pr-8 group-hover:text-white transition-colors">
           {item.question}
         </span>
         <motion.div
@@ -71,7 +71,7 @@ function FAQItem({ item, isOpen, onToggle }: { item: typeof faqItems[0]; isOpen:
             transition={{ duration: 0.3 }}
             className="overflow-hidden"
           >
-            <p className="font-body text-sm md:text-base text-black/50 pb-6 leading-relaxed max-w-3xl">
+            <p className="font-body text-sm md:text-base text-white/50 pb-6 leading-relaxed max-w-3xl">
               {item.answer}
             </p>
           </motion.div>
@@ -85,9 +85,9 @@ export default function FAQ() {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
 
   return (
-    <SectionWrapper id="faq" className="bg-white text-black py-16 md:py-20 px-6 md:px-10">
+    <SectionWrapper id="faq" className="bg-black py-16 md:py-20 px-6 md:px-10">
       <div className="max-w-4xl mx-auto">
-        <SectionHeading className="text-black mb-12 md:mb-16">
+        <SectionHeading className="text-white mb-12 md:mb-16">
           FAQ
         </SectionHeading>
 

@@ -33,7 +33,7 @@ export default function SectionWrapper({ children, className = '', id }: Section
 export function SectionHeading({ children, className = '' }: { children: ReactNode; className?: string }) {
   return (
     <motion.h2
-      className={`font-display text-[36px] sm:text-[48px] md:text-[80px] lg:text-[100px] leading-none ${className}`}
+      className={`font-display text-[36px] sm:text-[48px] md:text-[80px] lg:text-[100px] leading-none text-center w-full ${className}`}
       initial={{ y: 60, opacity: 0 }}
       whileInView={{ y: 0, opacity: 1 }}
       viewport={{ once: true }}
