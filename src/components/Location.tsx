@@ -25,11 +25,11 @@ export default function Location() {
               </span>
             </div>
 
-            {/* Fungi Farm logo */}
+            {/* Lovyviter logo */}
             <div className="mb-6">
               <img
-                src="/fungi-farm-logo.png"
-                alt="Fungi Farm"
+                src="/lovyviter-logo.png"
+                alt="Ловивітер"
                 className="h-24 md:h-28 w-auto object-contain"
               />
             </div>
