@@ -86,12 +86,10 @@ export default function Location() {
               viewport={{ once: true }}
               transition={{ delay: 0.4 }}
             >
-              <div className="w-full bg-white/5 border border-white/10 overflow-hidden" style={{ height: '420px' }}>
+              <div className="w-full border border-white/10 overflow-hidden" style={{ height: '420px' }}>
                 <iframe
                   src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1071.9180709636946!2d25.743862619689715!3d49.8121093183993!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x472fd790c56e267f%3A0x1f3a317fd0dfac!2z0JvQntCS0JjQktCG0KLQldCg!5e1!3m2!1suk!2sua!4v1779738116247!5m2!1suk!2sua"
-                  width="100%"
-                  height="100%"
-                  style={{ border: 0, display: 'block' }}
+                  style={{ border: 0, display: 'block', width: '100%', height: '420px' }}
                   allowFullScreen
                   loading="lazy"
                   referrerPolicy="no-referrer-when-downgrade"
