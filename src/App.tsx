@@ -12,7 +12,6 @@ import Schedule from './components/Schedule';
 import Registration from './components/Registration';
 import Location from './components/Location';
 import Organizers from './components/Organizers';
-import Sponsors from './components/Sponsors';
 import FAQ from './components/FAQ';
 import MediaNote from './components/MediaNote';
 import Footer from './components/Footer';
@@ -59,7 +58,6 @@ function App() {
         <Registration />
         <Location />
         <Organizers />
-        <Sponsors />
         <FAQ />
         <MediaNote />
         <Footer />
