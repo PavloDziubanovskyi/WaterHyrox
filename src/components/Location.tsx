@@ -86,12 +86,12 @@ export default function Location() {
               viewport={{ once: true }}
               transition={{ delay: 0.4 }}
             >
-              <div className="w-full flex-1 min-h-[360px] bg-white/5 border border-white/10 overflow-hidden">
+              <div className="w-full bg-white/5 border border-white/10 overflow-hidden" style={{ height: '420px' }}>
                 <iframe
-                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d20592.75210308726!2d25.771560578470883!3d49.82189821073246!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x472fd790c56e267f%3A0x1f3a317fd0dfac!2z0JvQntCS0JjQktCG0KLQldCg!5e0!3m2!1suk!2sua!4v1779737967706!5m2!1suk!2sua"
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1071.9180709636946!2d25.743862619689715!3d49.8121093183993!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x472fd790c56e267f%3A0x1f3a317fd0dfac!2z0JvQntCS0JjQktCG0KLQldCg!5e1!3m2!1suk!2sua!4v1779738116247!5m2!1suk!2sua"
                   width="100%"
-                  height="360"
-                  style={{ border: 0 }}
+                  height="100%"
+                  style={{ border: 0, display: 'block' }}
                   allowFullScreen
                   loading="lazy"
                   referrerPolicy="no-referrer-when-downgrade"
@@ -101,7 +101,7 @@ export default function Location() {
 
               {/* Кнопка маршруту */}
               <a
-                href="https://www.google.com/maps/dir/?api=1&destination=49.82189821073246,25.771560578470883"
+                href="https://www.google.com/maps/place/ЛОВИВІТЕР/@49.8121093,25.7438626,17z"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center justify-center gap-3 w-full py-4 border-2 border-white/20 hover:border-pink-accent text-white hover:text-pink-accent font-display text-lg tracking-wider transition-colors duration-300 group"
