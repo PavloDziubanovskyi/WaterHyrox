@@ -5,9 +5,7 @@ import SectionWrapper, { SectionHeading } from './SectionWrapper';
 export default function Location() {
   return (
     <>
-      {/* ══════════════════════════════════
-          ГЕНЕРАЛЬНИЙ ПАРТНЕР
-      ══════════════════════════════════ */}
+      {/* ══ ГЕНЕРАЛЬНИЙ ПАРТНЕР ══ */}
       <SectionWrapper id="location" className="bg-black py-16 md:py-20 px-6 md:px-10">
         <div className="max-w-7xl mx-auto">
 
@@ -15,42 +13,43 @@ export default function Location() {
             ГЕНЕРАЛЬНИЙ ПАРТНЕР
           </SectionHeading>
 
-          {/* РЯД 1: Лого зліва великe — назва+адреса справа */}
+          {/* Лого по центру */}
           <motion.div
-            className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-16 items-center mb-12 md:mb-16"
-            initial={{ opacity: 0, y: 30 }}
+            className="flex justify-center mb-8 md:mb-10"
+            initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ delay: 0.1 }}
           >
-            {/* Лого */}
-            <div className="flex items-center justify-center md:justify-start">
-              <img
-                src="/lovyviter-logo.png"
-                alt="Ловивітер"
-                className="w-full max-w-xs md:max-w-sm object-contain"
-              />
-            </div>
+            <img
+              src="/lovyviter-logo.png"
+              alt="Ловивітер"
+              className="h-32 md:h-44 w-auto object-contain"
+            />
+          </motion.div>
 
-            {/* Назва + адреса */}
-            <div>
-              <h3 className="font-display text-3xl sm:text-4xl md:text-5xl text-white mb-2 leading-tight">
-                Розважальний комплекс
-              </h3>
-              <h3 className="font-display text-3xl sm:text-4xl md:text-5xl text-pink-accent mb-8 leading-tight">
-                «Ловивітер»
-              </h3>
-              <div className="flex items-start gap-3">
-                <MapPin className="text-pink-accent flex-shrink-0 mt-1" size={20} />
-                <p className="font-body text-base md:text-lg text-white/60 leading-relaxed">
-                  с. Зашляхом, вул. Підлісна 2<br />
-                  Кременецький р-н, Тернопільська обл.
-                </p>
-              </div>
+          {/* Назва + адреса по центру */}
+          <motion.div
+            className="text-center mb-12 md:mb-16"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.15 }}
+          >
+            <h3 className="font-display text-3xl sm:text-4xl md:text-5xl text-white leading-tight mb-1">
+              Розважальний комплекс
+            </h3>
+            <h3 className="font-display text-3xl sm:text-4xl md:text-5xl text-pink-accent leading-tight mb-6">
+              «Ловивітер»
+            </h3>
+            <div className="flex items-center justify-center gap-2 text-white/60">
+              <MapPin className="text-pink-accent flex-shrink-0" size={18} />
+              <p className="font-body text-base md:text-lg leading-relaxed">
+                с. Зашляхом, вул. Підлісна 2, Кременецький р-н, Тернопільська обл.
+              </p>
             </div>
           </motion.div>
 
-          {/* РЯД 2: Відео зліва — карта+кнопка справа */}
+          {/* Відео зліва — карта+кнопка справа */}
           <motion.div
             className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 items-start"
             initial={{ opacity: 0, y: 30 }}
@@ -58,7 +57,7 @@ export default function Location() {
             viewport={{ once: true }}
             transition={{ delay: 0.3 }}
           >
-            {/* Відео "Як доїхати" */}
+            {/* Відео */}
             <div>
               <div className="flex items-center gap-2 mb-4">
                 <Navigation className="text-pink-accent" size={16} />
@@ -66,20 +65,18 @@ export default function Location() {
                   Як доїхати
                 </span>
               </div>
-              {/* TODO: замінити на реальне відео — вставити YouTube/Vimeo src */}
+              {/* TODO: замінити на реальне відео */}
               <div className="w-full aspect-video bg-white/5 border border-white/10 flex flex-col items-center justify-center gap-3 group">
                 <div className="w-14 h-14 rounded-full border-2 border-white/20 flex items-center justify-center group-hover:border-pink-accent transition-colors duration-300">
                   <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" className="text-white/30 ml-1 group-hover:text-pink-accent transition-colors duration-300">
                     <path d="M8 5v14l11-7z" />
                   </svg>
                 </div>
-                <span className="font-body text-xs text-white/20 tracking-wider">
-                  Відео незабаром
-                </span>
+                <span className="font-body text-xs text-white/20 tracking-wider">Відео незабаром</span>
               </div>
             </div>
 
-            {/* Карта + кнопка маршруту */}
+            {/* Карта + кнопка */}
             <div className="flex flex-col gap-4">
               <div className="w-full border border-white/10 overflow-hidden" style={{ height: '300px' }}>
                 <iframe
@@ -106,9 +103,7 @@ export default function Location() {
         </div>
       </SectionWrapper>
 
-      {/* ══════════════════════════════════
-          СПОНСОРИ
-      ══════════════════════════════════ */}
+      {/* ══ СПОНСОРИ ══ */}
       <SectionWrapper id="sponsors" className="bg-black py-16 md:py-20 px-6 md:px-10 border-t border-white/10">
         <div className="max-w-7xl mx-auto">
 
@@ -123,7 +118,6 @@ export default function Location() {
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ delay: 0.0 }}
               whileHover={{ scale: 1.03 }}
             >
               <img src="/sponsor-continental.png" alt="Континентал Фармерз Груп" className="max-w-full max-h-full object-contain" />
