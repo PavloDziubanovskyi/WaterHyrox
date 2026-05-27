@@ -36,14 +36,31 @@ export default function Hero() {
 
   return (
     <section id="hero" className="relative min-h-screen bg-black flex flex-col items-center justify-center px-4 sm:px-6 py-20 overflow-hidden">
-      <div className="absolute inset-0 opacity-[0.03]">
+
+      {/* Video background */}
+      <video
+        autoPlay
+        muted
+        loop
+        playsInline
+        className="absolute inset-0 w-full h-full object-cover opacity-40"
+        style={{ zIndex: 0 }}
+      >
+        <source src="/hero-bg.mp4" type="video/mp4" />
+      </video>
+
+      {/* Dark overlay over video */}
+      <div className="absolute inset-0 bg-black/50" style={{ zIndex: 1 }} />
+
+      {/* Pink glow */}
+      <div className="absolute inset-0 opacity-[0.04]" style={{ zIndex: 2 }}>
         <div className="absolute inset-0" style={{
           backgroundImage: `radial-gradient(circle at 50% 50%, #FF2D9B 0%, transparent 70%)`,
         }} />
       </div>
 
       <motion.div
-        className="relative z-10 text-center w-full max-w-6xl"
+        className="relative z-20 text-center w-full max-w-6xl"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 0.8, delay: 0.2 }}
@@ -117,7 +134,7 @@ export default function Hero() {
       </motion.div>
 
       <motion.div
-        className="absolute bottom-6 sm:bottom-8 flex flex-col items-center gap-2"
+        className="absolute bottom-6 sm:bottom-8 flex flex-col items-center gap-2 z-20"
         animate={{ y: [0, 8, 0] }}
         transition={{ duration: 2, repeat: Infinity }}
       >
