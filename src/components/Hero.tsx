@@ -37,20 +37,29 @@ export default function Hero() {
   return (
     <section id="hero" className="relative min-h-screen bg-black flex flex-col items-center justify-center px-4 sm:px-6 py-20 overflow-hidden">
 
-      {/* Video background */}
-      <video
-        autoPlay
-        muted
-        loop
-        playsInline
-        className="absolute inset-0 w-full h-full object-cover opacity-40"
-        style={{ zIndex: 0 }}
-      >
-        <source src="/hero-bg.mp4" type="video/mp4" />
-      </video>
+      {/* YouTube video background */}
+      <div className="absolute inset-0 overflow-hidden" style={{ zIndex: 0 }}>
+        <iframe
+          src="https://www.youtube.com/embed/k3AVZajzx-g?autoplay=1&mute=1&loop=1&playlist=k3AVZajzx-g&controls=0&showinfo=0&rel=0&modestbranding=1&playsinline=1&enablejsapi=1"
+          allow="autoplay; encrypted-media"
+          className="absolute"
+          style={{
+            top: '50%',
+            left: '50%',
+            transform: 'translate(-50%, -50%)',
+            width: '100vw',
+            height: '56.25vw',
+            minHeight: '100vh',
+            minWidth: '177.78vh',
+            border: 0,
+            pointerEvents: 'none',
+          }}
+          title="Hero background video"
+        />
+      </div>
 
       {/* Dark overlay over video */}
-      <div className="absolute inset-0 bg-black/50" style={{ zIndex: 1 }} />
+      <div className="absolute inset-0 bg-black/55" style={{ zIndex: 1 }} />
 
       {/* Pink glow */}
       <div className="absolute inset-0 opacity-[0.04]" style={{ zIndex: 2 }}>
