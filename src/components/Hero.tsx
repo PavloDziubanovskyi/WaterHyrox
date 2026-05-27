@@ -37,8 +37,24 @@ export default function Hero() {
   return (
     <section id="hero" className="relative min-h-screen bg-black flex flex-col items-center justify-center px-4 sm:px-6 py-20 overflow-hidden">
 
+      {/* Cloudinary video background — works on all devices */}
+      <video
+        autoPlay
+        muted
+        loop
+        playsInline
+        disablePictureInPicture
+        className="absolute inset-0 w-full h-full object-cover"
+        style={{ zIndex: 0 }}
+      >
+        <source src="https://res.cloudinary.com/dsuei2gxq/video/upload/v1779883730/vecteezy_asian-men-practicing-swimming-and-preparing-to-play-water_46013651_dpmbk5.mp4" type="video/mp4" />
+      </video>
+
+      {/* Dark overlay */}
+      <div className="absolute inset-0 bg-black/60" style={{ zIndex: 1 }} />
+
       {/* Pink glow */}
-      <div className="absolute inset-0 opacity-[0.03]" style={{ zIndex: 1 }}>
+      <div className="absolute inset-0 opacity-[0.04]" style={{ zIndex: 2 }}>
         <div className="absolute inset-0" style={{
           backgroundImage: `radial-gradient(circle at 50% 50%, #FF2D9B 0%, transparent 70%)`,
         }} />
