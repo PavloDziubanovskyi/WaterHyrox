@@ -37,10 +37,22 @@ export default function Hero() {
   return (
     <section id="hero" className="relative min-h-screen bg-black flex flex-col items-center justify-center px-4 sm:px-6 py-20 overflow-hidden">
 
-      {/* YouTube video background */}
-      <div className="absolute inset-0 overflow-hidden" style={{ zIndex: 0 }}>
+      {/* Mobile/tablet: mp4 video background */}
+      <video
+        autoPlay
+        muted
+        loop
+        playsInline
+        className="absolute inset-0 w-full h-full object-cover md:hidden"
+        style={{ zIndex: 0 }}
+      >
+        <source src="/hero-bg.mp4" type="video/mp4" />
+      </video>
+
+      {/* Desktop: YouTube iframe background */}
+      <div className="absolute inset-0 overflow-hidden hidden md:block" style={{ zIndex: 0 }}>
         <iframe
-          src="https://www.youtube.com/embed/k3AVZajzx-g?autoplay=1&mute=1&loop=1&playlist=k3AVZajzx-g&controls=0&showinfo=0&rel=0&modestbranding=1&playsinline=1&enablejsapi=1"
+          src="https://www.youtube.com/embed/k3AVZajzx-g?autoplay=1&mute=1&loop=1&playlist=k3AVZajzx-g&controls=0&showinfo=0&rel=0&modestbranding=1&playsinline=1"
           allow="autoplay; encrypted-media"
           className="absolute"
           style={{
@@ -58,7 +70,7 @@ export default function Hero() {
         />
       </div>
 
-      {/* Dark overlay over video */}
+      {/* Dark overlay */}
       <div className="absolute inset-0 bg-black/55" style={{ zIndex: 1 }} />
 
       {/* Pink glow */}
