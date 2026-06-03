@@ -31,7 +31,7 @@ export default function Registration() {
           viewport={{ once: true }}
           transition={{ delay: 0.2 }}
         >
-          Реєстрація до 1 серпня 2026
+          Реєстрація до 16 серпня 2026
         </motion.p>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6 mb-12">

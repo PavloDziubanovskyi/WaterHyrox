@@ -2,8 +2,8 @@ import { motion } from 'framer-motion';
 import { useCountdown } from '../hooks/useCountdown';
 import { ChevronDown } from 'lucide-react';
 
-const eventDate = new Date('2026-08-08T09:00:00+03:00');
-const regDeadline = new Date('2026-08-01T23:59:00+03:00');
+const eventDate = new Date('2026-08-22T09:00:00+03:00');
+const regDeadline = new Date('2026-08-16T23:59:00+03:00');
 
 function CounterBlock({ label, timeLeft }: { label: string; timeLeft: { days: number; hours: number; minutes: number; seconds: number } }) {
   return (

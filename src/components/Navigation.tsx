@@ -178,7 +178,7 @@ export default function Navigation() {
                 </div>
               </div>
               <div className="text-center sm:text-right">
-                <div className="font-display text-xl sm:text-2xl text-white">08.08.2026</div>
+                <div className="font-display text-xl sm:text-2xl text-white">22.08.2026</div>
                 <div className="font-body text-xs text-pink-accent tracking-widest uppercase mt-1">с. Зашляхом</div>
               </div>
             </motion.div>
