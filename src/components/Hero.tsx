@@ -94,7 +94,7 @@ export default function Hero() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 1 }}
         >
-          <span className="font-display text-xl sm:text-2xl md:text-4xl text-white">8 СЕРПНЯ 2026</span>
+          <span className="font-display text-xl sm:text-2xl md:text-4xl text-white">22 СЕРПНЯ 2026</span>
           <span className="hidden md:block w-1.5 h-1.5 rounded-full bg-pink-accent" />
           <span className="font-body text-xs sm:text-sm md:text-base text-white/50 text-center px-4">с. Зашляхом, Тернопільська обл.</span>
         </motion.div>
