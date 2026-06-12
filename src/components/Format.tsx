@@ -1,5 +1,5 @@
 import { motion, AnimatePresence } from 'framer-motion';
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 import { Waves, Flame, Dumbbell, Footprints, Flag, ChevronLeft, ChevronRight } from 'lucide-react';
 
 const GongIcon = ({ size = 64, strokeWidth = 1.5 }: { size?: number; strokeWidth?: number }) => (
@@ -42,6 +42,8 @@ const slideVariants = {
 export default function Format() {
   const [current, setCurrent] = useState(0);
   const [direction, setDirection] = useState(0);
+  const touchStartX = useRef<number | null>(null);
+  const touchEndX = useRef<number | null>(null);
 
   const goTo = (index: number) => {
     setDirection(index > current ? 1 : -1);
@@ -65,6 +67,25 @@ export default function Format() {
     window.addEventListener('keydown', handleKey);
     return () => window.removeEventListener('keydown', handleKey);
   });
+
+  // Touch swipe handlers
+  const onTouchStart = (e: React.TouchEvent) => {
+    touchStartX.current = e.touches[0].clientX;
+    touchEndX.current = null;
+  };
+  const onTouchMove = (e: React.TouchEvent) => {
+    touchEndX.current = e.touches[0].clientX;
+  };
+  const onTouchEnd = () => {
+    if (touchStartX.current === null || touchEndX.current === null) return;
+    const diff = touchStartX.current - touchEndX.current;
+    if (Math.abs(diff) > 40) {
+      if (diff > 0) next();
+      else prev();
+    }
+    touchStartX.current = null;
+    touchEndX.current = null;
+  };
 
   const stage = stages[current];
   const IconComponent = stage.icon;
@@ -107,7 +128,13 @@ export default function Format() {
         </div>
 
         {/* Card container with overflow hidden for slide effect */}
-        <div className="relative overflow-hidden rounded-xl" style={{ height: 'min(75vh, 600px)', minHeight: '460px' }}>
+        <div
+          className="relative overflow-hidden rounded-xl"
+          style={{ height: 'min(75vh, 600px)', minHeight: '460px' }}
+          onTouchStart={onTouchStart}
+          onTouchMove={onTouchMove}
+          onTouchEnd={onTouchEnd}
+        >
 
           {/* Background stack — showing 2 cards behind for depth */}
           {[2, 1].map((offset) => {
@@ -239,23 +266,43 @@ export default function Format() {
         </div>
       </div>
 
-      {/* Veteran modifications */}
+      {/* Veteran modifications — prominent block */}
       <div className="px-6 md:px-10 py-12 md:py-16 max-w-7xl mx-auto">
         <motion.div
-          className="border-l-2 border-pink-accent/60 pl-6 py-2 space-y-3"
-          initial={{ opacity: 0, x: -20 }}
-          whileInView={{ opacity: 1, x: 0 }}
+          className="bg-white/5 border border-pink-accent/40 p-6 md:p-10"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
         >
-          <div className="font-body text-xs text-pink-accent tracking-[0.3em] uppercase mb-3">
-            Модифікації для категорії «Ветерани»
+          <div className="flex items-center gap-3 mb-6">
+            <div className="w-8 h-8 bg-pink-accent flex items-center justify-center flex-shrink-0">
+              <span className="text-black font-display text-lg">★</span>
+            </div>
+            <h3 className="font-display text-2xl md:text-4xl text-white">
+              МОДИФІКАЦІЇ ДЛЯ ВЕТЕРАНІВ
+            </h3>
           </div>
-          <p className="font-body text-sm md:text-base text-white/60 leading-relaxed">
-            <span className="text-pink-accent font-semibold">*</span> Станція 1 — «Берпі зі стрибком в довжину» — можлива модифікація з відтисканням та крокуванням
+          <p className="font-body text-sm md:text-base text-white/60 mb-6 leading-relaxed">
+            Учасники категорії «Ветерани» (ветерани війни, УБД, особи з інвалідністю) мають право на спрощені варіанти окремих станцій:
           </p>
-          <p className="font-body text-sm md:text-base text-white/60 leading-relaxed">
-            <span className="text-pink-accent font-semibold">**</span> Станція 2 — «Прогулянка фермера» — передбачена можливість вибору ваги гантелей
-          </p>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div className="border border-pink-accent/30 p-5">
+              <div className="font-display text-lg md:text-xl text-pink-accent mb-2">
+                СТАНЦІЯ 1 — БЕРПІ-СТРИБКИ
+              </div>
+              <p className="font-body text-sm md:text-base text-white/70 leading-relaxed">
+                Дозволена модифікація: <strong className="text-white">відтискання + крокування</strong> замість повного берпі зі стрибком
+              </p>
+            </div>
+            <div className="border border-pink-accent/30 p-5">
+              <div className="font-display text-lg md:text-xl text-pink-accent mb-2">
+                СТАНЦІЯ 2 — FARMER CARRY
+              </div>
+              <p className="font-body text-sm md:text-base text-white/70 leading-relaxed">
+                Передбачена <strong className="text-white">можливість вибору ваги гантелей</strong> за погодженням з організаторами
+              </p>
+            </div>
+          </div>
         </motion.div>
       </div>
     </section>

@@ -113,31 +113,46 @@ export default function Location() {
 
           <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4 md:gap-6">
 
+            {/* Континентал */}
             <motion.div
-              className="aspect-[3/2] border border-pink-accent/30 flex items-center justify-center p-4 md:p-6 hover:border-pink-accent transition-colors duration-300"
+              className="border border-pink-accent/30 bg-white flex items-center justify-center p-4 md:p-6 hover:border-pink-accent transition-colors duration-300"
+              style={{ aspectRatio: '3/2' }}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               whileHover={{ scale: 1.03 }}
             >
-              <img src="/sponsor-continental.png" alt="Континентал Фармерз Груп" className="max-w-full max-h-full object-contain" />
+              <img
+                src="/sponsor-continental.png"
+                alt="Континентал Фармерз Груп"
+                className="w-full h-full object-contain"
+                style={{ maxWidth: '80%', maxHeight: '80%' }}
+              />
             </motion.div>
 
+            {/* Fungi Farm */}
             <motion.div
-              className="aspect-[3/2] border border-pink-accent/30 bg-white flex items-center justify-center p-4 md:p-6 hover:border-pink-accent transition-colors duration-300"
+              className="border border-pink-accent/30 bg-white flex items-center justify-center p-4 md:p-6 hover:border-pink-accent transition-colors duration-300"
+              style={{ aspectRatio: '3/2' }}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.06 }}
               whileHover={{ scale: 1.03 }}
             >
-              <img src="/fungi-farm-logo.png" alt="Fungi Farm" className="max-w-full max-h-full object-contain" />
+              <img
+                src="/fungi-farm-logo.png"
+                alt="Fungi Farm"
+                className="w-full h-full object-contain"
+                style={{ maxWidth: '80%', maxHeight: '80%' }}
+              />
             </motion.div>
 
             {Array.from({ length: 6 }, (_, i) => (
               <motion.div
                 key={i}
-                className="aspect-[3/2] bg-black/5 border border-black/10 flex items-center justify-center hover:border-pink-accent/50 transition-colors duration-300"
+                className="bg-black/5 border border-black/10 flex items-center justify-center hover:border-pink-accent/50 transition-colors duration-300"
+                style={{ aspectRatio: '3/2' }}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}

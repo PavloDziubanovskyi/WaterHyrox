@@ -8,7 +8,11 @@ const regDeadline = new Date('2026-08-16T23:59:00+03:00');
 function CounterBlock({ label, timeLeft }: { label: string; timeLeft: { days: number; hours: number; minutes: number; seconds: number } }) {
   return (
     <div className="text-center">
-      <div className="flex gap-2 md:gap-3 justify-center mb-2">
+      {/* Big label ABOVE */}
+      <p className="font-display text-sm sm:text-base md:text-xl text-white tracking-[0.2em] mb-3 md:mb-4">
+        {label}
+      </p>
+      <div className="flex gap-2 md:gap-3 justify-center mb-1">
         {[
           { val: timeLeft.days, unit: 'ДН' },
           { val: timeLeft.hours, unit: 'ГОД' },
@@ -16,16 +20,15 @@ function CounterBlock({ label, timeLeft }: { label: string; timeLeft: { days: nu
           { val: timeLeft.seconds, unit: 'СЕК' },
         ].map((item, i) => (
           <div key={i} className="flex flex-col items-center">
-            <span className="font-display text-[32px] md:text-[56px] leading-none text-pink-accent">
+            <span className="font-display text-[36px] sm:text-[52px] md:text-[64px] leading-none text-pink-accent">
               {String(item.val).padStart(2, '0')}
             </span>
-            <span className="text-[10px] md:text-xs text-white/50 tracking-widest font-body">
+            <span className="text-[9px] md:text-xs text-white/40 tracking-widest font-body mt-1">
               {item.unit}
             </span>
           </div>
         ))}
       </div>
-      <p className="text-xs md:text-sm text-white/60 font-body tracking-wider">{label}</p>
     </div>
   );
 }
@@ -37,24 +40,11 @@ export default function Hero() {
   return (
     <section id="hero" className="relative min-h-screen bg-black flex flex-col items-center justify-center px-4 sm:px-6 py-20 overflow-hidden">
 
-      {/* Cloudinary video background — works on all devices */}
-      <video
-        autoPlay
-        muted
-        loop
-        playsInline
-        disablePictureInPicture
-        className="absolute inset-0 w-full h-full object-cover"
-        style={{ zIndex: 0 }}
-      >
-        <source src="https://res.cloudinary.com/dsuei2gxq/video/upload/v1779883730/vecteezy_asian-men-practicing-swimming-and-preparing-to-play-water_46013651_dpmbk5.mp4" type="video/mp4" />
-      </video>
-
-      {/* Dark overlay */}
-      <div className="absolute inset-0 bg-black/60" style={{ zIndex: 1 }} />
+      {/* Dark background — no video */}
+      <div className="absolute inset-0 bg-black" style={{ zIndex: 0 }} />
 
       {/* Pink glow */}
-      <div className="absolute inset-0 opacity-[0.04]" style={{ zIndex: 2 }}>
+      <div className="absolute inset-0 opacity-[0.05]" style={{ zIndex: 1 }}>
         <div className="absolute inset-0" style={{
           backgroundImage: `radial-gradient(circle at 50% 50%, #FF2D9B 0%, transparent 70%)`,
         }} />
@@ -89,7 +79,7 @@ export default function Hero() {
         </motion.p>
 
         <motion.div
-          className="flex flex-col md:flex-row items-center justify-center gap-2 md:gap-6 mb-8 md:mb-12"
+          className="flex flex-col md:flex-row items-center justify-center gap-2 md:gap-6 mb-10 md:mb-14"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 1 }}
@@ -99,21 +89,24 @@ export default function Hero() {
           <span className="font-body text-xs sm:text-sm md:text-base text-white/50 text-center px-4">с. Зашляхом, Тернопільська обл.</span>
         </motion.div>
 
+        {/* Counters */}
         <motion.div
-          className="flex flex-col md:flex-row items-center justify-center gap-6 md:gap-12 mb-10 md:mb-14"
+          className="flex flex-col md:flex-row items-center justify-center gap-8 md:gap-12 mb-10 md:mb-14"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 1.2 }}
         >
           <CounterBlock label="ДО ПОЧАТКУ ЗМАГАНЬ" timeLeft={eventCountdown} />
-          <div className="hidden md:block w-px h-12 bg-white/10" />
+          <div className="hidden md:block w-px h-24 bg-white/10" />
           <CounterBlock label="ДО КІНЦЯ РЕЄСТРАЦІЇ" timeLeft={regCountdown} />
-          <div className="hidden md:block w-px h-12 bg-white/10" />
+          <div className="hidden md:block w-px h-24 bg-white/10" />
           <div className="text-center">
-            <div className="font-display text-[32px] md:text-[56px] leading-none text-pink-accent mb-1">
+            <p className="font-display text-sm sm:text-base md:text-xl text-white tracking-[0.2em] mb-3 md:mb-4">
+              ЗАРЕЄСТРОВАНО
+            </p>
+            <div className="font-display text-[36px] sm:text-[52px] md:text-[64px] leading-none text-pink-accent mb-1">
               0<span className="text-white/30">/110</span>
             </div>
-            <p className="text-xs md:text-sm text-white/60 font-body tracking-wider">ЗАРЕЄСТРОВАНО</p>
           </div>
         </motion.div>
 

@@ -11,9 +11,26 @@ const starterPackItems = [
 ];
 
 const steps = [
-  { number: '01', text: 'Заповніть форму на сайті' },
-  { number: '02', text: 'Отримайте посилання на оплату на пошту' },
-  { number: '03', text: 'Після оплати — лист зі стартовим номером' },
+  {
+    number: '01',
+    title: 'Заповніть Google форму',
+    text: 'Натисніть кнопку «Перейти до реєстрації» нижче та заповніть усі поля форми. Вкажіть коректну електронну пошту — на неї прийде лист.',
+  },
+  {
+    number: '02',
+    title: 'Отримайте реквізити на пошту',
+    text: 'Після заповнення форми на вашу email-адресу автоматично надійде лист з реквізитами для оплати та призначенням платежу.',
+  },
+  {
+    number: '03',
+    title: 'Оплатіть та надішліть квитанцію',
+    text: 'Здійсніть оплату банківським переказом за вказаними реквізитами. Після оплати надішліть скріншот квитанції на otterprojectswim@gmail.com.',
+  },
+  {
+    number: '04',
+    title: 'Очікуйте підтвердження',
+    text: 'Протягом 72 годин після оплати ви отримаєте офіційний лист-підтвердження зі стартовим номером. Реєстрація вважається завершеною після підтвердження.',
+  },
 ];
 
 export default function Registration() {
@@ -92,11 +109,14 @@ export default function Registration() {
           </h3>
           <div className="space-y-4">
             {steps.map((step, i) => (
-              <div key={i} className="flex items-start gap-4">
-                <div className="font-display text-4xl md:text-5xl text-black/10 leading-none">
+              <div key={i} className="flex items-start gap-4 border border-black/10 p-4 md:p-5">
+                <div className="font-display text-3xl md:text-4xl text-pink-accent leading-none flex-shrink-0 w-10 md:w-12">
                   {step.number}
                 </div>
-                <p className="font-body text-base md:text-lg text-black/70 pt-3">{step.text}</p>
+                <div>
+                  <div className="font-display text-lg md:text-xl text-black mb-1">{step.title}</div>
+                  <p className="font-body text-sm md:text-base text-black/60 leading-relaxed">{step.text}</p>
+                </div>
               </div>
             ))}
           </div>
