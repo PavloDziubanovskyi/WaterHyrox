@@ -52,26 +52,53 @@ export default function Registration() {
         </motion.p>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6 mb-12">
+          {/* Early bird */}
           <motion.div
-            className="border-2 border-black p-6 md:p-8"
+            className="border-2 border-black p-6 md:p-8 relative"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.3 }}
           >
-            <div className="font-display text-5xl md:text-6xl text-black mb-2">Стандарт</div>
-            <div className="font-display text-4xl md:text-5xl text-pink-accent">2 000 грн</div>
+            <div className="absolute top-4 right-4 bg-pink-accent px-3 py-1">
+              <span className="font-body text-xs text-black font-bold tracking-wider">ДО 6 СЕРПНЯ</span>
+            </div>
+            <div className="font-display text-4xl md:text-5xl text-black mb-2">Стандарт</div>
+            <div className="font-display text-3xl md:text-4xl text-pink-accent mb-3">2 000 грн</div>
+            <p className="font-body text-sm text-black/50">Реєстрація до 6 серпня 2026</p>
           </motion.div>
 
+          {/* Late registration */}
           <motion.div
-            className="border-2 border-black p-6 md:p-8"
+            className="border-2 border-black p-6 md:p-8 relative"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.35 }}
+          >
+            <div className="absolute top-4 right-4 bg-black px-3 py-1">
+              <span className="font-body text-xs text-white font-bold tracking-wider">7–16 СЕРПНЯ</span>
+            </div>
+            <div className="font-display text-4xl md:text-5xl text-black mb-2">Стандарт</div>
+            <div className="font-display text-3xl md:text-4xl text-black mb-3">2 500 грн</div>
+            <p className="font-body text-sm text-black/50">Реєстрація 7–16 серпня 2026</p>
+          </motion.div>
+
+          {/* Veterans */}
+          <motion.div
+            className="border-2 border-black p-6 md:p-8 md:col-span-2"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.4 }}
           >
-            <div className="font-display text-5xl md:text-6xl text-black mb-2">Ветерани</div>
-            <div className="font-display text-4xl md:text-5xl text-pink-accent">1 000 грн</div>
+            <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-2">
+              <div>
+                <div className="font-display text-4xl md:text-5xl text-black mb-2">Ветерани</div>
+                <p className="font-body text-sm text-black/50">Ветерани війни, УБД, особи з інвалідністю (з документом)</p>
+              </div>
+              <div className="font-display text-3xl md:text-4xl text-pink-accent">1 000 грн</div>
+            </div>
           </motion.div>
         </div>
 
