@@ -102,6 +102,23 @@ export default function Registration() {
           </motion.div>
         </div>
 
+        <div className="text-center mb-12">
+          <motion.a
+            href="https://forms.gle/W2NuDEQz9hjeAGZ86"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-block px-12 py-5 bg-pink-accent text-black font-display text-2xl md:text-3xl tracking-wider hover:bg-black hover:text-pink-accent border-2 border-pink-accent transition-all duration-300 glow-pink glow-pink-hover"
+            initial={{ opacity: 0, scale: 0.9 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.45 }}
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.98 }}
+          >
+            ПЕРЕЙТИ ДО РЕЄСТРАЦІЇ
+          </motion.a>
+        </div>
+
         <motion.div
           className="mb-12"
           initial={{ opacity: 0, y: 20 }}
@@ -148,21 +165,6 @@ export default function Registration() {
             ))}
           </div>
         </motion.div>
-
-        <motion.a
-          href="https://forms.gle/W2NuDEQz9hjeAGZ86"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="inline-block px-12 py-5 bg-pink-accent text-black font-display text-2xl md:text-3xl tracking-wider hover:bg-black hover:text-pink-accent border-2 border-pink-accent transition-all duration-300 glow-pink glow-pink-hover"
-          initial={{ opacity: 0, scale: 0.9 }}
-          whileInView={{ opacity: 1, scale: 1 }}
-          viewport={{ once: true }}
-          transition={{ delay: 0.7 }}
-          whileHover={{ scale: 1.05 }}
-          whileTap={{ scale: 0.98 }}
-        >
-          ПЕРЕЙТИ ДО РЕЄСТРАЦІЇ
-        </motion.a>
       </div>
     </SectionWrapper>
   );
