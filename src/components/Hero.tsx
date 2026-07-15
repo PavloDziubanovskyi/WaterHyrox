@@ -78,6 +78,22 @@ export default function Hero() {
           ФУНКЦІОНАЛЬНИЙ ПЛАВАЛЬНИЙ ЧЕМПІОНАТ
         </motion.p>
 
+        <motion.a
+          href="#registration"
+          onClick={(e) => {
+            e.preventDefault();
+            document.querySelector('#registration')?.scrollIntoView({ behavior: 'smooth' });
+          }}
+          className="inline-block px-6 sm:px-10 py-3 sm:py-4 mb-10 md:mb-14 border-2 border-pink-accent text-white font-display text-lg sm:text-2xl md:text-3xl tracking-wider bg-black hover:bg-pink-accent hover:text-black transition-all duration-300 glow-pink glow-pink-hover"
+          initial={{ opacity: 0, scale: 0.9 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ delay: 0.9 }}
+          whileHover={{ scale: 1.05 }}
+          whileTap={{ scale: 0.98 }}
+        >
+          ЗАРЕЄСТРУВАТИСЬ
+        </motion.a>
+
         <motion.div
           className="flex flex-col md:flex-row items-center justify-center gap-2 md:gap-6 mb-10 md:mb-14"
           initial={{ opacity: 0, y: 20 }}
@@ -91,7 +107,7 @@ export default function Hero() {
 
         {/* Counters */}
         <motion.div
-          className="flex flex-col md:flex-row items-center justify-center gap-8 md:gap-12 mb-10 md:mb-14"
+          className="flex flex-col md:flex-row items-center justify-center gap-8 md:gap-12"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 1.2 }}
@@ -109,22 +125,6 @@ export default function Hero() {
             </div>
           </div>
         </motion.div>
-
-        <motion.a
-          href="#registration"
-          onClick={(e) => {
-            e.preventDefault();
-            document.querySelector('#registration')?.scrollIntoView({ behavior: 'smooth' });
-          }}
-          className="inline-block px-6 sm:px-10 py-3 sm:py-4 border-2 border-pink-accent text-white font-display text-lg sm:text-2xl md:text-3xl tracking-wider bg-black hover:bg-pink-accent hover:text-black transition-all duration-300 glow-pink glow-pink-hover"
-          initial={{ opacity: 0, scale: 0.9 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ delay: 1.4 }}
-          whileHover={{ scale: 1.05 }}
-          whileTap={{ scale: 0.98 }}
-        >
-          ЗАРЕЄСТРУВАТИСЬ
-        </motion.a>
       </motion.div>
 
       <motion.div
