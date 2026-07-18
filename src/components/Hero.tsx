@@ -121,7 +121,7 @@ export default function Hero() {
               ЗАРЕЄСТРОВАНО
             </p>
             <div className="font-display text-[36px] sm:text-[52px] md:text-[64px] leading-none text-pink-accent mb-1">
-              17<span className="text-white/30">/110</span>
+              21<span className="text-white/30">/110</span>
             </div>
           </div>
         </motion.div>
