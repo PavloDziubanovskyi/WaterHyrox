@@ -103,15 +103,16 @@ export default function Location() {
         </div>
       </SectionWrapper>
 
-      {/* ══ СПОНСОРИ ══ */}
+      {/* ══ ПАРТНЕРИ ТА СПОНСОРИ ══ */}
       <SectionWrapper id="sponsors" className="bg-white text-black py-16 md:py-20 px-6 md:px-10">
         <div className="max-w-7xl mx-auto">
 
+          {/* PARTNERS */}
           <SectionHeading className="text-black mb-12 md:mb-16">
-            СПОНСОРИ
+            ПАРТНЕРИ
           </SectionHeading>
 
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4 md:gap-6">
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4 md:gap-6 mb-20 md:mb-24">
 
             {/* Континентал */}
             <motion.div
@@ -148,15 +149,73 @@ export default function Location() {
               />
             </motion.div>
 
-            {Array.from({ length: 6 }, (_, i) => (
+            {/* Sport UA — новий партнер */}
+            <motion.div
+              className="border border-pink-accent/30 bg-white flex items-center justify-center p-4 md:p-6 hover:border-pink-accent transition-colors duration-300"
+              style={{ aspectRatio: '3/2' }}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.12 }}
+              whileHover={{ scale: 1.03 }}
+            >
+              <img
+                src="/partner-sport-ua.png"
+                alt="Sport UA"
+                className="w-full h-full object-contain"
+                style={{ maxWidth: '80%', maxHeight: '80%' }}
+              />
+            </motion.div>
+
+            {Array.from({ length: 1 }, (_, i) => (
               <motion.div
-                key={i}
+                key={`p-${i}`}
                 className="bg-black/5 border border-black/10 flex items-center justify-center hover:border-pink-accent/50 transition-colors duration-300"
                 style={{ aspectRatio: '3/2' }}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ delay: (i + 2) * 0.06 }}
+                transition={{ delay: (i + 3) * 0.06 }}
+                whileHover={{ scale: 1.03 }}
+              >
+                <span className="font-display text-2xl text-black/15">LOGO</span>
+              </motion.div>
+            ))}
+          </div>
+
+          {/* SPONSORS */}
+          <SectionHeading className="text-black mb-12 md:mb-16">
+            СПОНСОРИ
+          </SectionHeading>
+
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4 md:gap-6">
+
+            {/* XSport — новий спонсор */}
+            <motion.div
+              className="border border-pink-accent/30 bg-white flex items-center justify-center p-4 md:p-6 hover:border-pink-accent transition-colors duration-300"
+              style={{ aspectRatio: '3/2' }}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              whileHover={{ scale: 1.03 }}
+            >
+              <img
+                src="/sponsor-xsport.png"
+                alt="XSport"
+                className="w-full h-full object-contain"
+                style={{ maxWidth: '80%', maxHeight: '80%' }}
+              />
+            </motion.div>
+
+            {Array.from({ length: 3 }, (_, i) => (
+              <motion.div
+                key={`s-${i}`}
+                className="bg-black/5 border border-black/10 flex items-center justify-center hover:border-pink-accent/50 transition-colors duration-300"
+                style={{ aspectRatio: '3/2' }}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: (i + 1) * 0.06 }}
                 whileHover={{ scale: 1.03 }}
               >
                 <span className="font-display text-2xl text-black/15">LOGO</span>
