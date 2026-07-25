@@ -3,39 +3,9 @@ import { useCountdown } from '../hooks/useCountdown';
 import { ChevronDown } from 'lucide-react';
 
 const eventDate = new Date('2026-08-22T09:00:00+03:00');
-const regDeadline = new Date('2026-08-16T23:59:00+03:00');
-
-function CounterBlock({ label, timeLeft }: { label: string; timeLeft: { days: number; hours: number; minutes: number; seconds: number } }) {
-  return (
-    <div className="text-center">
-      {/* Big label ABOVE */}
-      <p className="font-display text-sm sm:text-base md:text-xl text-white tracking-[0.2em] mb-3 md:mb-4">
-        {label}
-      </p>
-      <div className="flex gap-2 md:gap-3 justify-center mb-1">
-        {[
-          { val: timeLeft.days, unit: 'ДН' },
-          { val: timeLeft.hours, unit: 'ГОД' },
-          { val: timeLeft.minutes, unit: 'ХВ' },
-          { val: timeLeft.seconds, unit: 'СЕК' },
-        ].map((item, i) => (
-          <div key={i} className="flex flex-col items-center">
-            <span className="font-display text-[36px] sm:text-[52px] md:text-[64px] leading-none text-pink-accent">
-              {String(item.val).padStart(2, '0')}
-            </span>
-            <span className="text-[9px] md:text-xs text-white/40 tracking-widest font-body mt-1">
-              {item.unit}
-            </span>
-          </div>
-        ))}
-      </div>
-    </div>
-  );
-}
 
 export default function Hero() {
   const eventCountdown = useCountdown(eventDate);
-  const regCountdown = useCountdown(regDeadline);
 
   return (
     <section id="hero" className="relative min-h-screen bg-black flex flex-col items-center justify-center px-4 sm:px-6 py-20 overflow-hidden">
@@ -105,23 +75,64 @@ export default function Hero() {
           <span className="font-body text-xs sm:text-sm md:text-base text-white/50 text-center px-4">с. Зашляхом, Тернопільська обл.</span>
         </motion.div>
 
-        {/* Counters */}
+        {/* BIG event countdown */}
         <motion.div
-          className="flex flex-col md:flex-row items-center justify-center gap-8 md:gap-12"
+          className="flex flex-col items-center gap-4 md:gap-6"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 1.2 }}
         >
-          <CounterBlock label="ДО ПОЧАТКУ ЗМАГАНЬ" timeLeft={eventCountdown} />
-          <div className="hidden md:block w-px h-24 bg-white/10" />
-          <CounterBlock label="ДО КІНЦЯ РЕЄСТРАЦІЇ" timeLeft={regCountdown} />
-          <div className="hidden md:block w-px h-24 bg-white/10" />
-          <div className="text-center">
-            <p className="font-display text-sm sm:text-base md:text-xl text-white tracking-[0.2em] mb-3 md:mb-4">
-              ЗАРЕЄСТРОВАНО
+          <div className="flex items-center gap-3 md:gap-4">
+            <div className="w-8 md:w-16 h-px bg-pink-accent" />
+            <p className="font-display text-xs sm:text-sm md:text-lg text-pink-accent tracking-[0.35em] whitespace-nowrap">
+              ДО ПОЧАТКУ ЗМАГАНЬ
             </p>
-            <div className="font-display text-[36px] sm:text-[52px] md:text-[64px] leading-none text-pink-accent mb-1">
-              26<span className="text-white/30">/110</span>
+            <div className="w-8 md:w-16 h-px bg-pink-accent" />
+          </div>
+
+          <div className="flex gap-3 sm:gap-5 md:gap-8 justify-center">
+            {[
+              { val: eventCountdown.days, unit: 'ДНІВ' },
+              { val: eventCountdown.hours, unit: 'ГОДИН' },
+              { val: eventCountdown.minutes, unit: 'ХВИЛИН' },
+              { val: eventCountdown.seconds, unit: 'СЕКУНД' },
+            ].map((item, i) => (
+              <div key={i} className="flex flex-col items-center relative">
+                <div className="relative border-2 border-white/10 bg-white/[0.02] backdrop-blur-sm px-3 sm:px-5 md:px-7 py-3 sm:py-4 md:py-5 min-w-[68px] sm:min-w-[92px] md:min-w-[120px]">
+                  <span className="block font-display text-[44px] sm:text-[68px] md:text-[92px] leading-none text-white text-center">
+                    {String(item.val).padStart(2, '0')}
+                  </span>
+                  {/* corner accents */}
+                  <span className="absolute top-0 left-0 w-2 h-2 border-t-2 border-l-2 border-pink-accent" />
+                  <span className="absolute top-0 right-0 w-2 h-2 border-t-2 border-r-2 border-pink-accent" />
+                  <span className="absolute bottom-0 left-0 w-2 h-2 border-b-2 border-l-2 border-pink-accent" />
+                  <span className="absolute bottom-0 right-0 w-2 h-2 border-b-2 border-r-2 border-pink-accent" />
+                </div>
+                <span className="text-[9px] sm:text-[11px] md:text-xs text-white/50 tracking-[0.25em] font-body mt-2 md:mt-3">
+                  {item.unit}
+                </span>
+              </div>
+            ))}
+          </div>
+
+          {/* Registration info + registered counter */}
+          <div className="flex flex-col md:flex-row items-center gap-4 md:gap-8 mt-4 md:mt-6">
+            <div className="text-center">
+              <p className="font-body text-[10px] sm:text-xs text-white/40 tracking-[0.2em] mb-1">
+                РЕЄСТРАЦІЯ ЗАКРИВАЄТЬСЯ
+              </p>
+              <p className="font-display text-lg sm:text-xl md:text-2xl text-white/85 tracking-wider">
+                19 СЕРПНЯ 2026
+              </p>
+            </div>
+            <div className="hidden md:block w-px h-10 bg-white/15" />
+            <div className="text-center">
+              <p className="font-body text-[10px] sm:text-xs text-white/40 tracking-[0.2em] mb-1">
+                ЗАРЕЄСТРОВАНО
+              </p>
+              <p className="font-display text-lg sm:text-xl md:text-2xl text-pink-accent tracking-wider">
+                26<span className="text-white/30">/110</span>
+              </p>
             </div>
           </div>
         </motion.div>
