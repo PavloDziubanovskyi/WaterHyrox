@@ -112,11 +112,11 @@ export default function Location() {
             ПАРТНЕРИ
           </SectionHeading>
 
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4 md:gap-6 mb-20 md:mb-24">
+          <div className="flex flex-wrap justify-center gap-4 md:gap-6 mb-20 md:mb-24">
 
             {/* Континентал */}
             <motion.div
-              className="border border-pink-accent/30 bg-white flex items-center justify-center p-4 md:p-6 hover:border-pink-accent transition-colors duration-300"
+              className="border border-pink-accent/30 bg-white flex items-center justify-center p-4 md:p-6 hover:border-pink-accent transition-colors duration-300 w-[calc(50%-8px)] sm:w-[calc(33.333%-16px)] md:w-[280px]"
               style={{ aspectRatio: '3/2' }}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -133,7 +133,7 @@ export default function Location() {
 
             {/* Fungi Farm */}
             <motion.div
-              className="border border-pink-accent/30 bg-white flex items-center justify-center p-4 md:p-6 hover:border-pink-accent transition-colors duration-300"
+              className="border border-pink-accent/30 bg-white flex items-center justify-center p-4 md:p-6 hover:border-pink-accent transition-colors duration-300 w-[calc(50%-8px)] sm:w-[calc(33.333%-16px)] md:w-[280px]"
               style={{ aspectRatio: '3/2' }}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -151,7 +151,7 @@ export default function Location() {
 
             {/* Sport UA — новий партнер */}
             <motion.div
-              className="border border-pink-accent/30 bg-white flex items-center justify-center p-4 md:p-6 hover:border-pink-accent transition-colors duration-300"
+              className="border border-pink-accent/30 bg-white flex items-center justify-center p-4 md:p-6 hover:border-pink-accent transition-colors duration-300 w-[calc(50%-8px)] sm:w-[calc(33.333%-16px)] md:w-[280px]"
               style={{ aspectRatio: '3/2' }}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -167,20 +167,6 @@ export default function Location() {
               />
             </motion.div>
 
-            {Array.from({ length: 1 }, (_, i) => (
-              <motion.div
-                key={`p-${i}`}
-                className="bg-black/5 border border-black/10 flex items-center justify-center hover:border-pink-accent/50 transition-colors duration-300"
-                style={{ aspectRatio: '3/2' }}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: (i + 3) * 0.06 }}
-                whileHover={{ scale: 1.03 }}
-              >
-                <span className="font-display text-2xl text-black/15">LOGO</span>
-              </motion.div>
-            ))}
           </div>
 
           {/* SPONSORS */}
@@ -188,11 +174,11 @@ export default function Location() {
             СПОНСОРИ
           </SectionHeading>
 
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4 md:gap-6">
+          <div className="flex flex-wrap justify-center gap-4 md:gap-6">
 
             {/* XSport — новий спонсор */}
             <motion.div
-              className="border border-pink-accent/30 bg-white flex items-center justify-center p-4 md:p-6 hover:border-pink-accent transition-colors duration-300"
+              className="border border-pink-accent/30 bg-white flex items-center justify-center p-4 md:p-6 hover:border-pink-accent transition-colors duration-300 w-[calc(50%-8px)] sm:w-[calc(33.333%-16px)] md:w-[280px]"
               style={{ aspectRatio: '3/2' }}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -209,7 +195,7 @@ export default function Location() {
 
             {/* Fizi */}
             <motion.div
-              className="border border-pink-accent/30 bg-white flex items-center justify-center p-4 md:p-6 hover:border-pink-accent transition-colors duration-300"
+              className="border border-pink-accent/30 bg-white flex items-center justify-center p-4 md:p-6 hover:border-pink-accent transition-colors duration-300 w-[calc(50%-8px)] sm:w-[calc(33.333%-16px)] md:w-[280px]"
               style={{ aspectRatio: '3/2' }}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -227,7 +213,7 @@ export default function Location() {
 
             {/* Avène */}
             <motion.div
-              className="border border-pink-accent/30 bg-white flex items-center justify-center p-4 md:p-6 hover:border-pink-accent transition-colors duration-300"
+              className="border border-pink-accent/30 bg-white flex items-center justify-center p-4 md:p-6 hover:border-pink-accent transition-colors duration-300 w-[calc(50%-8px)] sm:w-[calc(33.333%-16px)] md:w-[280px]"
               style={{ aspectRatio: '3/2' }}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -243,20 +229,6 @@ export default function Location() {
               />
             </motion.div>
 
-            {Array.from({ length: 1 }, (_, i) => (
-              <motion.div
-                key={`s-${i}`}
-                className="bg-black/5 border border-black/10 flex items-center justify-center hover:border-pink-accent/50 transition-colors duration-300"
-                style={{ aspectRatio: '3/2' }}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: (i + 3) * 0.06 }}
-                whileHover={{ scale: 1.03 }}
-              >
-                <span className="font-display text-2xl text-black/15">LOGO</span>
-              </motion.div>
-            ))}
           </div>
 
         </div>
