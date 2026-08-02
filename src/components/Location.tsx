@@ -207,7 +207,43 @@ export default function Location() {
               />
             </motion.div>
 
-            {Array.from({ length: 3 }, (_, i) => (
+            {/* Fizi */}
+            <motion.div
+              className="border border-pink-accent/30 bg-white flex items-center justify-center p-4 md:p-6 hover:border-pink-accent transition-colors duration-300"
+              style={{ aspectRatio: '3/2' }}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.06 }}
+              whileHover={{ scale: 1.03 }}
+            >
+              <img
+                src="/sponsor-fizi.png"
+                alt="Fizi"
+                className="w-full h-full object-contain"
+                style={{ maxWidth: '80%', maxHeight: '80%' }}
+              />
+            </motion.div>
+
+            {/* Avène */}
+            <motion.div
+              className="border border-pink-accent/30 bg-white flex items-center justify-center p-4 md:p-6 hover:border-pink-accent transition-colors duration-300"
+              style={{ aspectRatio: '3/2' }}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.12 }}
+              whileHover={{ scale: 1.03 }}
+            >
+              <img
+                src="/sponsor-avene.png"
+                alt="Avène"
+                className="w-full h-full object-contain"
+                style={{ maxWidth: '80%', maxHeight: '80%' }}
+              />
+            </motion.div>
+
+            {Array.from({ length: 1 }, (_, i) => (
               <motion.div
                 key={`s-${i}`}
                 className="bg-black/5 border border-black/10 flex items-center justify-center hover:border-pink-accent/50 transition-colors duration-300"
@@ -215,7 +251,7 @@ export default function Location() {
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ delay: (i + 1) * 0.06 }}
+                transition={{ delay: (i + 3) * 0.06 }}
                 whileHover={{ scale: 1.03 }}
               >
                 <span className="font-display text-2xl text-black/15">LOGO</span>
