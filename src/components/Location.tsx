@@ -89,7 +89,7 @@ export default function Location() {
                 />
               </div>
               <a
-                href="https://www.google.com/maps/place/ЛОВИВІТЕР/@49.8121093,25.7438626,17z"
+                href="https://maps.app.goo.gl/1gTD7BaNcvvB8v9L8"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center justify-center gap-3 w-full py-4 border-2 border-white/20 hover:border-pink-accent text-white hover:text-pink-accent font-display text-lg tracking-wider transition-colors duration-300"
