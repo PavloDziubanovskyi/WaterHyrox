@@ -127,7 +127,7 @@ export default function Location() {
                 src="/sponsor-continental.png"
                 alt="Континентал Фармерз Груп"
                 className="w-full h-full object-contain"
-                style={{ maxWidth: '80%', maxHeight: '80%' }}
+                style={{ maxWidth: '90%', maxHeight: '75%' }}
               />
             </motion.div>
 
@@ -145,7 +145,7 @@ export default function Location() {
                 src="/fungi-farm-logo.png"
                 alt="Fungi Farm"
                 className="w-full h-full object-contain"
-                style={{ maxWidth: '80%', maxHeight: '80%' }}
+                style={{ maxWidth: '90%', maxHeight: '75%' }}
               />
             </motion.div>
 
@@ -163,7 +163,7 @@ export default function Location() {
                 src="/partner-sport-ua.png"
                 alt="Sport UA"
                 className="w-full h-full object-contain"
-                style={{ maxWidth: '80%', maxHeight: '80%' }}
+                style={{ maxWidth: '90%', maxHeight: '75%' }}
               />
             </motion.div>
 
@@ -189,7 +189,7 @@ export default function Location() {
                 src="/sponsor-xsport.png"
                 alt="XSport"
                 className="w-full h-full object-contain"
-                style={{ maxWidth: '80%', maxHeight: '80%' }}
+                style={{ maxWidth: '90%', maxHeight: '75%' }}
               />
             </motion.div>
 
@@ -207,7 +207,7 @@ export default function Location() {
                 src="/sponsor-fizi.png"
                 alt="Fizi"
                 className="w-full h-full object-contain"
-                style={{ maxWidth: '80%', maxHeight: '80%' }}
+                style={{ maxWidth: '90%', maxHeight: '75%' }}
               />
             </motion.div>
 
@@ -225,7 +225,25 @@ export default function Location() {
                 src="/sponsor-avene.png"
                 alt="Avène"
                 className="w-full h-full object-contain"
-                style={{ maxWidth: '80%', maxHeight: '80%' }}
+                style={{ maxWidth: '90%', maxHeight: '75%' }}
+              />
+            </motion.div>
+
+            {/* Морщинська */}
+            <motion.div
+              className="border border-pink-accent/30 bg-white flex items-center justify-center p-4 md:p-6 hover:border-pink-accent transition-colors duration-300 w-[calc(50%-8px)] sm:w-[calc(33.333%-16px)] md:w-[280px]"
+              style={{ aspectRatio: '3/2' }}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.18 }}
+              whileHover={{ scale: 1.03 }}
+            >
+              <img
+                src="/sponsor-morshynska.png"
+                alt="Морщинська"
+                className="w-full h-full object-contain"
+                style={{ maxWidth: '90%', maxHeight: '75%' }}
               />
             </motion.div>
 
