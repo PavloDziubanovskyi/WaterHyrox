@@ -1,6 +1,55 @@
 import { motion, AnimatePresence } from 'framer-motion';
-import { useState, useRef } from 'react';
-import { Waves, Flame, Dumbbell, Footprints, Flag, ChevronLeft, ChevronRight } from 'lucide-react';
+import { useState, useRef, useEffect } from 'react';
+import { Waves, Flame, Dumbbell, Footprints, Flag, ChevronLeft, ChevronRight, Volume2, VolumeX } from 'lucide-react';
+
+// Lazy-loading autoplay video player (Reels-style)
+function ReelPlayer({ src }: { src: string }) {
+  const videoRef = useRef<HTMLVideoElement | null>(null);
+  const [muted, setMuted] = useState(true);
+  const [inView, setInView] = useState(false);
+
+  // Load video only when card is in viewport
+  useEffect(() => {
+    const el = videoRef.current;
+    if (!el) return;
+    const io = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setInView(true);
+            el.play().catch(() => { /* autoplay blocked */ });
+          } else {
+            el.pause();
+          }
+        });
+      },
+      { threshold: 0.3 }
+    );
+    io.observe(el);
+    return () => io.disconnect();
+  }, [src]);
+
+  return (
+    <div className="relative w-full h-full bg-black rounded-lg overflow-hidden">
+      <video
+        ref={videoRef}
+        src={inView ? src : undefined}
+        muted={muted}
+        loop
+        playsInline
+        preload="metadata"
+        className="w-full h-full object-cover"
+      />
+      <button
+        onClick={() => setMuted((m) => !m)}
+        className="absolute bottom-3 right-3 w-10 h-10 rounded-full bg-black/60 backdrop-blur-sm border border-white/20 flex items-center justify-center text-white hover:bg-black/80 transition-colors z-10"
+        aria-label={muted ? 'Увімкнути звук' : 'Вимкнути звук'}
+      >
+        {muted ? <VolumeX size={18} /> : <Volume2 size={18} />}
+      </button>
+    </div>
+  );
+}
 
 const GongIcon = ({ size = 64, strokeWidth = 1.5 }: { size?: number; strokeWidth?: number }) => (
   <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={strokeWidth} strokeLinecap="round" strokeLinejoin="round">
@@ -10,15 +59,23 @@ const GongIcon = ({ size = 64, strokeWidth = 1.5 }: { size?: number; strokeWidth
   </svg>
 );
 
+// Cloudinary videos with auto format + quality optimization
+const CLD = 'https://res.cloudinary.com/dsuei2gxq/video/upload/f_auto,q_auto';
+const VIDEO_SWIM   = `${CLD}/v1786433978/copy_569154C4-8DDA-482B-8478-6A0AB1BCB612_v1rhb1.mp4`;
+const VIDEO_BURPEE = `${CLD}/v1786434687/copy_6F7F63F6-7813-4781-AFCB-3F8D98DAFD66_yn1pje.mp4`;
+const VIDEO_FARMER = `${CLD}/v1786435197/copy_6A21AAC5-EF5A-4360-9E78-00C25C65613F_zy6tin.mp4`;
+const VIDEO_BEAR   = `${CLD}/v1786435386/copy_C4E87728-C7F3-48FF-AFF0-560856936336_bdfrvi.mp4`;
+const VIDEO_RUN    = `${CLD}/v1786435789/copy_12149467-65BD-4E53-974F-F528F1F85753_afzl9u.mp4`;
+
 const stages = [
-  { icon: Waves, title: '100 М ПЛАВАННЯ', subtitle: 'Перший відрізок' },
-  { icon: Flame, title: 'БЕРПІ-СТРИБКИ 40М', subtitle: 'Станція 1*' },
-  { icon: Waves, title: '100 М ПЛАВАННЯ', subtitle: 'Другий відрізок' },
-  { icon: Dumbbell, title: 'FARMER CARRY 40М', subtitle: 'Станція 2**' },
-  { icon: Waves, title: '100 М ПЛАВАННЯ', subtitle: 'Третій відрізок' },
-  { icon: Footprints, title: 'BEAR CRAWL', subtitle: 'Станція 3' },
-  { icon: Waves, title: '100 М ПЛАВАННЯ', subtitle: 'Четвертий відрізок' },
-  { icon: Flag, title: 'ФІНІШ — БІГ 200М + ГОНГ', subtitle: 'Фінальний ривок', secondaryIcon: GongIcon },
+  { icon: Waves, title: '100 М ПЛАВАННЯ', subtitle: 'Перший відрізок', video: VIDEO_SWIM },
+  { icon: Flame, title: 'БЕРПІ-СТРИБКИ 40М', subtitle: 'Станція 1*', video: VIDEO_BURPEE },
+  { icon: Waves, title: '100 М ПЛАВАННЯ', subtitle: 'Другий відрізок', video: VIDEO_SWIM },
+  { icon: Dumbbell, title: 'FARMER CARRY 40М', subtitle: 'Станція 2**', video: VIDEO_FARMER },
+  { icon: Waves, title: '100 М ПЛАВАННЯ', subtitle: 'Третій відрізок', video: VIDEO_SWIM },
+  { icon: Footprints, title: 'BEAR CRAWL', subtitle: 'Станція 3', video: VIDEO_BEAR },
+  { icon: Waves, title: '100 М ПЛАВАННЯ', subtitle: 'Четвертий відрізок', video: VIDEO_SWIM },
+  { icon: Flag, title: 'ФІНІШ — БІГ 200М + ГОНГ', subtitle: 'Фінальний ривок', secondaryIcon: GongIcon, video: VIDEO_RUN },
 ];
 
 const slideVariants = {
@@ -198,16 +255,21 @@ export default function Format() {
                   </h3>
                 </div>
 
-                {/* Right: video placeholder */}
+                {/* Right: vertical Reels-style video */}
                 <div className="flex items-center justify-center px-6 sm:px-10 md:px-10 lg:pr-12 lg:pl-0 pb-16 lg:pb-0 pt-0 lg:pt-0">
-                  <div className="w-full aspect-video bg-white/5 border border-white/10 rounded-lg flex flex-col items-center justify-center gap-3 relative overflow-hidden group">
-                    {/* TODO: replace with actual video URL */}
-                    <div className="w-14 h-14 rounded-full border-2 border-white/20 flex items-center justify-center group-hover:border-pink-accent transition-colors duration-300">
-                      <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" className="text-white/30 ml-1 group-hover:text-pink-accent transition-colors duration-300">
-                        <path d="M8 5v14l11-7z" />
-                      </svg>
-                    </div>
-                    <span className="font-body text-xs text-white/20 tracking-wider">Відео незабаром</span>
+                  <div className="w-full max-w-[260px] aspect-[9/16] max-h-[500px] bg-white/5 border border-white/10 rounded-lg overflow-hidden relative">
+                    {stage.video ? (
+                      <ReelPlayer key={`${current}-${stage.video}`} src={stage.video} />
+                    ) : (
+                      <div className="w-full h-full flex flex-col items-center justify-center gap-3 group">
+                        <div className="w-14 h-14 rounded-full border-2 border-white/20 flex items-center justify-center group-hover:border-pink-accent transition-colors duration-300">
+                          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" className="text-white/30 ml-1 group-hover:text-pink-accent transition-colors duration-300">
+                            <path d="M8 5v14l11-7z" />
+                          </svg>
+                        </div>
+                        <span className="font-body text-xs text-white/20 tracking-wider">Відео незабаром</span>
+                      </div>
+                    )}
                   </div>
                 </div>
               </div>
