@@ -1,52 +1,56 @@
 import { motion, AnimatePresence } from 'framer-motion';
-import { useState, useRef, useEffect } from 'react';
-import { Waves, Flame, Dumbbell, Footprints, Flag, ChevronLeft, ChevronRight, Volume2, VolumeX } from 'lucide-react';
+import { useState, useRef } from 'react';
+import { Waves, Flame, Dumbbell, Footprints, Flag, ChevronLeft, ChevronRight, Play } from 'lucide-react';
 
-// Lazy-loading autoplay video player (Reels-style)
+// Cloudinary poster URL generator (extract first-frame JPEG)
+const posterFromVideo = (videoUrl: string) => {
+  // Insert 'so_0.5' (offset 0.5s) + convert extension to jpg
+  return videoUrl
+    .replace('/video/upload/', '/video/upload/so_0.5/')
+    .replace(/\.mp4($|\?)/, '.jpg$1');
+};
+
+// Poster + click-to-play video player
 function ReelPlayer({ src }: { src: string }) {
   const videoRef = useRef<HTMLVideoElement | null>(null);
-  const [muted, setMuted] = useState(true);
-  const [inView, setInView] = useState(false);
+  const [started, setStarted] = useState(false);
 
-  // Load video only when card is in viewport
-  useEffect(() => {
-    const el = videoRef.current;
-    if (!el) return;
-    const io = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            setInView(true);
-            el.play().catch(() => { /* autoplay blocked */ });
-          } else {
-            el.pause();
-          }
-        });
-      },
-      { threshold: 0.3 }
-    );
-    io.observe(el);
-    return () => io.disconnect();
-  }, [src]);
+  const start = () => {
+    setStarted(true);
+    // Play on next tick after src is set
+    setTimeout(() => {
+      videoRef.current?.play().catch(() => { /* user will click play */ });
+    }, 50);
+  };
 
   return (
     <div className="relative w-full h-full bg-black rounded-lg overflow-hidden">
-      <video
-        ref={videoRef}
-        src={inView ? src : undefined}
-        muted={muted}
-        loop
-        playsInline
-        preload="metadata"
-        className="w-full h-full object-cover"
-      />
-      <button
-        onClick={() => setMuted((m) => !m)}
-        className="absolute bottom-3 right-3 w-10 h-10 rounded-full bg-black/60 backdrop-blur-sm border border-white/20 flex items-center justify-center text-white hover:bg-black/80 transition-colors z-10"
-        aria-label={muted ? 'Увімкнути звук' : 'Вимкнути звук'}
-      >
-        {muted ? <VolumeX size={18} /> : <Volume2 size={18} />}
-      </button>
+      {!started ? (
+        <button
+          onClick={start}
+          className="absolute inset-0 w-full h-full flex items-center justify-center group cursor-pointer"
+          style={{
+            backgroundImage: `url(${posterFromVideo(src)})`,
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
+          }}
+          aria-label="Відтворити відео"
+        >
+          <div className="w-16 h-16 rounded-full bg-black/60 backdrop-blur-sm border-2 border-white/80 flex items-center justify-center group-hover:bg-pink-accent group-hover:border-pink-accent transition-all duration-300 group-hover:scale-110">
+            <Play size={26} className="text-white ml-1" fill="white" />
+          </div>
+        </button>
+      ) : (
+        <video
+          ref={videoRef}
+          src={src}
+          controls
+          playsInline
+          preload="metadata"
+          poster={posterFromVideo(src)}
+          className="w-full h-full object-cover"
+        />
+      )}
     </div>
   );
 }
@@ -257,7 +261,13 @@ export default function Format() {
 
                 {/* Right: vertical Reels-style video */}
                 <div className="flex items-center justify-center px-6 sm:px-10 md:px-10 lg:pr-12 lg:pl-0 pb-16 lg:pb-0 pt-0 lg:pt-0">
-                  <div className="w-full max-w-[260px] aspect-[9/16] max-h-[500px] bg-white/5 border border-white/10 rounded-lg overflow-hidden relative">
+                  <div
+                    className="bg-white/5 border border-white/10 rounded-lg overflow-hidden relative w-full"
+                    style={{
+                      maxWidth: 'min(260px, 60vw)',
+                      aspectRatio: '9 / 16',
+                    }}
+                  >
                     {stage.video ? (
                       <ReelPlayer key={`${current}-${stage.video}`} src={stage.video} />
                     ) : (
