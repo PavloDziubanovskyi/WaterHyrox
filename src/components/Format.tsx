@@ -31,8 +31,9 @@ function ReelPlayer({ src }: { src: string }) {
           className="absolute inset-0 w-full h-full flex items-center justify-center group cursor-pointer"
           style={{
             backgroundImage: `url(${posterFromVideo(src)})`,
-            backgroundSize: 'cover',
+            backgroundSize: 'contain',
             backgroundPosition: 'center',
+            backgroundRepeat: 'no-repeat',
           }}
           aria-label="Відтворити відео"
         >
@@ -48,7 +49,7 @@ function ReelPlayer({ src }: { src: string }) {
           playsInline
           preload="metadata"
           poster={posterFromVideo(src)}
-          className="w-full h-full object-cover"
+          className="w-full h-full object-contain"
         />
       )}
     </div>
