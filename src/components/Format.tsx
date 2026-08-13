@@ -190,8 +190,7 @@ export default function Format() {
 
         {/* Card container with overflow hidden for slide effect */}
         <div
-          className="relative overflow-hidden rounded-xl"
-          style={{ height: 'min(75vh, 600px)', minHeight: '460px' }}
+          className="relative overflow-hidden rounded-xl lg:h-[min(75vh,600px)] lg:min-h-[460px]"
           onTouchStart={onTouchStart}
           onTouchMove={onTouchMove}
           onTouchEnd={onTouchEnd}
@@ -240,7 +239,7 @@ export default function Format() {
               {/* Content grid */}
               <div className="h-full grid grid-cols-1 lg:grid-cols-[1.2fr_1fr] relative z-10">
                 {/* Left: text */}
-                <div className="flex flex-col justify-center px-6 sm:px-10 md:px-14 pt-8 lg:pt-0 pb-16 lg:pb-0">
+                <div className="flex flex-col justify-start lg:justify-center px-6 sm:px-10 md:px-14 pt-8 lg:pt-0 pb-4 lg:pb-0">
                   <div className="font-body text-xs tracking-[0.3em] text-pink-accent mb-4 uppercase">
                     Етап {current + 1} / {stages.length} — {stage.subtitle}
                   </div>
@@ -260,7 +259,7 @@ export default function Format() {
                 </div>
 
                 {/* Right: vertical Reels-style video */}
-                <div className="flex items-center justify-center px-6 sm:px-10 md:px-10 lg:pr-12 lg:pl-0 pb-16 lg:pb-0 pt-0 lg:pt-0">
+                <div className="flex items-start lg:items-center justify-center px-6 sm:px-10 md:px-10 lg:pr-12 lg:pl-0 pt-0 pb-8 lg:pb-0">
                   <div
                     className="bg-white/5 border border-white/10 rounded-lg overflow-hidden relative w-full"
                     style={{
