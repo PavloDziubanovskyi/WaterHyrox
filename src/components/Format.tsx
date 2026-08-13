@@ -31,9 +31,8 @@ function ReelPlayer({ src }: { src: string }) {
           className="absolute inset-0 w-full h-full flex items-center justify-center group cursor-pointer"
           style={{
             backgroundImage: `url(${posterFromVideo(src)})`,
-            backgroundSize: 'contain',
+            backgroundSize: 'cover',
             backgroundPosition: 'center',
-            backgroundRepeat: 'no-repeat',
           }}
           aria-label="Відтворити відео"
         >
@@ -49,7 +48,7 @@ function ReelPlayer({ src }: { src: string }) {
           playsInline
           preload="metadata"
           poster={posterFromVideo(src)}
-          className="w-full h-full object-contain"
+          className="w-full h-full object-cover"
         />
       )}
     </div>
@@ -64,8 +63,8 @@ const GongIcon = ({ size = 64, strokeWidth = 1.5 }: { size?: number; strokeWidth
   </svg>
 );
 
-// Cloudinary videos with auto format + quality optimization
-const CLD = 'https://res.cloudinary.com/dsuei2gxq/video/upload/f_auto,q_auto';
+// Cloudinary videos — smart crop to 9:16 (Reels aspect) + auto format/quality
+const CLD = 'https://res.cloudinary.com/dsuei2gxq/video/upload/c_fill,ar_9:16,g_auto,f_auto,q_auto';
 const VIDEO_SWIM   = `${CLD}/v1786433978/copy_569154C4-8DDA-482B-8478-6A0AB1BCB612_v1rhb1.mp4`;
 const VIDEO_BURPEE = `${CLD}/v1786434687/copy_6F7F63F6-7813-4781-AFCB-3F8D98DAFD66_yn1pje.mp4`;
 const VIDEO_FARMER = `${CLD}/v1786435197/copy_6A21AAC5-EF5A-4360-9E78-00C25C65613F_zy6tin.mp4`;
