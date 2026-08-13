@@ -190,7 +190,8 @@ export default function Format() {
 
         {/* Card container with overflow hidden for slide effect */}
         <div
-          className="relative overflow-hidden rounded-xl lg:h-[min(75vh,600px)] lg:min-h-[460px]"
+          className="relative overflow-hidden rounded-xl"
+          style={{ height: 'min(75vh, 600px)', minHeight: '460px' }}
           onTouchStart={onTouchStart}
           onTouchMove={onTouchMove}
           onTouchEnd={onTouchEnd}
