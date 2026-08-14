@@ -131,7 +131,7 @@ export default function Hero() {
                 ЗАРЕЄСТРОВАНО
               </p>
               <p className="font-display text-lg sm:text-xl md:text-2xl text-pink-accent tracking-wider">
-                41<span className="text-white/30">/110</span>
+                39<span className="text-white/30">/110</span>
               </p>
             </div>
           </div>
