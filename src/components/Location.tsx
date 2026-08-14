@@ -116,7 +116,7 @@ export default function Location() {
 
             {/* Континентал */}
             <motion.div
-              className="border border-pink-accent/30 bg-white flex items-center justify-center p-4 md:p-6 hover:border-pink-accent transition-colors duration-300 w-[calc(50%-8px)] sm:w-[calc(33.333%-16px)] md:w-[280px]"
+              className="border border-pink-accent/30 bg-white flex items-center justify-center p-4 md:p-6 hover:border-pink-accent transition-colors duration-300 w-[calc(50%-8px)] sm:w-[calc(33.333%-16px)] md:w-[220px]"
               style={{ aspectRatio: '3/2' }}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -133,7 +133,7 @@ export default function Location() {
 
             {/* Fungi Farm */}
             <motion.div
-              className="border border-pink-accent/30 bg-white flex items-center justify-center p-4 md:p-6 hover:border-pink-accent transition-colors duration-300 w-[calc(50%-8px)] sm:w-[calc(33.333%-16px)] md:w-[280px]"
+              className="border border-pink-accent/30 bg-white flex items-center justify-center p-4 md:p-6 hover:border-pink-accent transition-colors duration-300 w-[calc(50%-8px)] sm:w-[calc(33.333%-16px)] md:w-[220px]"
               style={{ aspectRatio: '3/2' }}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -151,7 +151,7 @@ export default function Location() {
 
             {/* Sport UA — новий партнер */}
             <motion.div
-              className="border border-pink-accent/30 bg-white flex items-center justify-center p-4 md:p-6 hover:border-pink-accent transition-colors duration-300 w-[calc(50%-8px)] sm:w-[calc(33.333%-16px)] md:w-[280px]"
+              className="border border-pink-accent/30 bg-white flex items-center justify-center p-4 md:p-6 hover:border-pink-accent transition-colors duration-300 w-[calc(50%-8px)] sm:w-[calc(33.333%-16px)] md:w-[220px]"
               style={{ aspectRatio: '3/2' }}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -178,7 +178,7 @@ export default function Location() {
 
             {/* XSport — новий спонсор */}
             <motion.div
-              className="border border-pink-accent/30 bg-white flex items-center justify-center p-4 md:p-6 hover:border-pink-accent transition-colors duration-300 w-[calc(50%-8px)] sm:w-[calc(33.333%-16px)] md:w-[280px]"
+              className="border border-pink-accent/30 bg-white flex items-center justify-center p-4 md:p-6 hover:border-pink-accent transition-colors duration-300 w-[calc(50%-8px)] sm:w-[calc(33.333%-16px)] md:w-[220px]"
               style={{ aspectRatio: '3/2' }}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -195,7 +195,7 @@ export default function Location() {
 
             {/* Fizi */}
             <motion.div
-              className="border border-pink-accent/30 bg-white flex items-center justify-center p-4 md:p-6 hover:border-pink-accent transition-colors duration-300 w-[calc(50%-8px)] sm:w-[calc(33.333%-16px)] md:w-[280px]"
+              className="border border-pink-accent/30 bg-white flex items-center justify-center p-4 md:p-6 hover:border-pink-accent transition-colors duration-300 w-[calc(50%-8px)] sm:w-[calc(33.333%-16px)] md:w-[220px]"
               style={{ aspectRatio: '3/2' }}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -213,7 +213,7 @@ export default function Location() {
 
             {/* Avène */}
             <motion.div
-              className="border border-pink-accent/30 bg-white flex items-center justify-center p-4 md:p-6 hover:border-pink-accent transition-colors duration-300 w-[calc(50%-8px)] sm:w-[calc(33.333%-16px)] md:w-[280px]"
+              className="border border-pink-accent/30 bg-white flex items-center justify-center p-4 md:p-6 hover:border-pink-accent transition-colors duration-300 w-[calc(50%-8px)] sm:w-[calc(33.333%-16px)] md:w-[220px]"
               style={{ aspectRatio: '3/2' }}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -231,7 +231,7 @@ export default function Location() {
 
             {/* Морщинська */}
             <motion.div
-              className="border border-pink-accent/30 bg-white flex items-center justify-center p-4 md:p-6 hover:border-pink-accent transition-colors duration-300 w-[calc(50%-8px)] sm:w-[calc(33.333%-16px)] md:w-[280px]"
+              className="border border-pink-accent/30 bg-white flex items-center justify-center p-4 md:p-6 hover:border-pink-accent transition-colors duration-300 w-[calc(50%-8px)] sm:w-[calc(33.333%-16px)] md:w-[220px]"
               style={{ aspectRatio: '3/2' }}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -249,7 +249,7 @@ export default function Location() {
 
             {/* КДЮСШ №2 ім. Ю. Горайського */}
             <motion.div
-              className="border border-pink-accent/30 bg-white flex items-center justify-center p-4 md:p-6 hover:border-pink-accent transition-colors duration-300 w-[calc(50%-8px)] sm:w-[calc(33.333%-16px)] md:w-[280px]"
+              className="border border-pink-accent/30 bg-white flex items-center justify-center p-4 md:p-6 hover:border-pink-accent transition-colors duration-300 w-[calc(50%-8px)] sm:w-[calc(33.333%-16px)] md:w-[220px]"
               style={{ aspectRatio: '3/2' }}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -261,7 +261,7 @@ export default function Location() {
                 src="/sponsor-kdyussh.png"
                 alt="КДЮСШ №2 ім. Ю. Горайського"
                 className="w-full h-full object-contain"
-                style={{ maxWidth: '90%', maxHeight: '75%' }}
+                style={{ maxWidth: '75%', maxHeight: '95%' }}
               />
             </motion.div>
 
